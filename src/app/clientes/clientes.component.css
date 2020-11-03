@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+.example-button-row {
+  background-color: blue;
+  position: relative;
+  top: 10px;
+}
+.example-button-row button {
+  float: right;
+  height: 30px;
+  margin-right: 5%;
+  background-color: darkslategrey;
+  color: white;
+}

@@ -1,0 +1,113 @@
+
+<h3 class = "title">Bienvenido</h3>
+<div class="redBar"></div>
+<h4 class = "title">Registrar Negocio</h4>
+<form  method="post">
+   
+  
+  
+        <div class = "child1">
+            <div>
+                <label for="nombre" style="color: rgb(50, 50, 50)"><b>Nombre</b></label>
+            
+            <input type="text" placeholder="Enter Nombre" name="nombre" required [(ngModel)]="negocio.perfil.nombre">
+            <p [hidden]= "!errores.nombre[1]" style = "color: red;">{{errores.nombre[0]}}</p>
+       
+        </div>
+     
+             <div>
+                 <label for="aPaterno" style="color: rgb(50, 50, 50)"><b>Apellido Paterno</b></label>
+              
+             <input type="text" placeholder="Enter Apellido Paterno" name="aPaterno" required [(ngModel)]="negocio.perfil.apellidoP">
+             <p [hidden]= "!errores.aPaterno[1]" style = "color: red;">{{errores.aPaterno[0]}}</p>
+    
+            </div>
+
+              <div>
+                 <label for="aMaterno" style="color: rgb(50, 50, 50)"><b>Apellido Materno</b></label>
+            
+             <input type="text" placeholder="Enter Apellido Materno" name="aMaterno" required [(ngModel)]="negocio.perfil.apellidoM">
+             <p [hidden]= "!errores.aMaterno[1]" style = "color: red;">{{errores.aMaterno[0]}}</p>
+    
+            </div>
+
+              <div>
+                 <label for="dni" style="color: rgb(50, 50, 50)"><b>DNI</b></label>
+             
+             <input type="number" placeholder="Enter DNI" name="dni" required [(ngModel)]="negocio.perfil.dni">
+             <p [hidden]= "!errores.dni[1]" style = "color: red;">{{errores.dni[0]}}</p>
+    
+            </div>
+     
+             <div>
+                 <label for="ruc" style="color: rgb(50, 50, 50)"><b>Razon Social</b></label>
+             
+             <input type="number" placeholder="Enter RUC" name="ruc" required [(ngModel)]="negocio.ruc">
+             <p [hidden]= "!errores.ruc[1]" style = "color: red;">{{errores.ruc[0]}}</p>
+    
+            </div>
+
+        </div>
+        
+        <div class="child2" > 
+
+         <div>
+            <label for="correo" style="color: rgb(50, 50, 50)"><b>Correo</b></label>
+         
+        <input type="text" placeholder="Enter Correo" name="correo" required [(ngModel)]="negocio.perfil.correo">
+        <p [hidden]= "!errores.correo[1]" style = "color: red;">{{errores.correo[0]}}</p>
+    
+    </div>
+         <div>
+            <label for="direccion" style="color: rgb(50, 50, 50)"><b>Direccion</b></label>
+         
+        <input type="text" placeholder="Enter Direccion" name="direccion" required [(ngModel)]="negocio.perfil.direccion">
+        <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.direccion[0]}}</p>
+    
+        </div>
+         <div>
+            <label for="telefono" style="color: rgb(50, 50, 50)"><b>Telefono</b></label>
+         
+        <input maxlength = "9"
+        oninput="javascript: if (this.value.length > this.maxLength) 
+        this.value = this.value.slice(0, this.maxLength)"  type="number" placeholder="Enter Telefono" name="telefono" required [(ngModel)]="negocio.perfil.telefono">
+         </div>
+         <p [hidden]= "!errores.telefono[1]" style = "color: red;">{{errores.telefono[0]}}</p>
+    
+        <div>
+           <label for="password" style="color: rgb(50, 50, 50)"><b>Password</b></label>
+        
+         <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="negocio.password">
+         <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.direccion[0]}}</p>
+    
+         </div>
+        <div style="margin-top: 15px;margin-bottom: 15px; margin-left: 5%;">
+            <p style="color: red;">A continuacion creara un codigo con el cual los clientes podran unirse directamente
+                a su negocio.
+            </p>
+        </div>
+        <div>
+            <label for="codigo" style="color: rgb(50, 50, 50)"><b>Codigo</b></label>
+         
+        <input type="text" placeholder="Enter Codigo de Negocio" name="codigo" required [(ngModel)]="negocio.codigo">
+        <p [hidden]= "!errores.codigo[1]" style = "color: red;">{{errores.codigo[0]}}</p>
+    
+    </div>
+ 
+
+
+        <div>
+            <button style="margin-top: 40px; margin-left: 200px;" type="submit" (click)="registerNegocio()">Registrar</button>
+        </div>
+    
+    </div>
+        
+      
+        
+      
+ 
+  
+    
+  </form>
+
+

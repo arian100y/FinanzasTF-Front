@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+}
+.mat-elevation-z8 {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.title {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 20px;
+}
+
+.redBar {
+  border-bottom: 2px solid red;
+  margin-left: 5%;
+  margin-right: 5%;
+}

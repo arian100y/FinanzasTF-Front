@@ -1,0 +1,78 @@
+<h4 class = "title">Ingresar Tasa</h4>
+<div class="redBar"></div>
+<h4 class = "title"></h4>
+<form  method="post">
+   <div class="child1">
+   
+    <div>
+        <label for="tasa" style="color: rgb(50, 50, 50)"><b>Tasa</b></label>
+    
+    <input type="number" placeholder="Enter Tasa" name="tasa" required [(ngModel)]="tasa.monto">
+    <p [hidden]= "!errores.monto[1]" style = "color: red;">{{errores.monto[0]}}</p>
+          
+     </div>
+
+     <div >
+      <label for="food" style="color: rgb(50, 50, 50);"><b>Tipo</b></label>
+
+       <mat-form-field appearance="fill" >
+          <mat-label>Tipo</mat-label>
+          <mat-select name = "food" [(ngModel)] = "tasa.tipo">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> 
+        <p [hidden]= "!errores.tipo[1]" style = "color: red;">{{errores.tipo[0]}}</p>
+          
+       </div>
+     
+     <div>
+        <label for="mantenimiento" style="color: rgb(50, 50, 50)"><b> Mantenimiento</b></label>
+        
+        <input  name="mantenimiento" type="checkbox" checked="checked" [(ngModel)] = "client.mantenimiento" >
+        <span class="checkmark"></span>
+          
+      </div>
+      <div >
+        <label for="food2" style="color: rgb(50, 50, 50);"><b>Ingrese Tiempo</b></label>
+
+         <mat-form-field appearance="fill" >
+            <mat-label>Tiempo</mat-label>
+            <mat-select name = "food2" [(ngModel)] = "tasa.periodo">
+              <mat-option *ngFor="let food of foods2" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> 
+          <p [hidden]= "!errores.periodo[1]" style = "color: red;">{{errores.periodo[0]}}</p>
+          
+
+         </div>
+
+       
+             
+        <div>
+            <button type="submit" (click)="registerCliente()">Registrar Cliente!</button>
+        </div>
+    
+         
+</div>
+<div class="child2">
+    
+ 
+<div style="text-align: center; position: relative;">
+<img src="/assets/download.png" alt="image" style="width: 28%;margin-bottom: 1%;">
+<h4 style="text-align: center; font-size: 25px;">{{client.perfil.nombre}}</h4>
+<h4 class="text">{{client.perfil.telefono}}</h4>
+<div class = "bar"></div>
+<h4 class="text">{{client.perfil.correo}}</h4>
+<h4 class="text">{{client.perfil.direccion}}</h4>
+<h4 class="text">{{client.perfil.dni}}</h4>
+<h4 class="text">TSM {{client.tasa.monto}}%</h4>
+<h4 class="text">Linea de credito: {{client.credito}}</h4>
+<h4 class="text">2.5% por gasto de mantenimiento</h4>
+</div>
+
+</div> 
+</form>

@@ -1,0 +1,48 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: red;
+}
+nav {
+  width: 100%;
+
+  top: 0;
+  z-index: 9;
+}
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  text-shadow: 1px 1px 4px black;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: rgb(100, 100, 100);
+  color: white;
+}
+
+.test {
+  float: right;
+  background-color: darkslategrey;
+  cursor: pointer;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  background-color: darkslategrey;
+  color: white;
+  text-align: center;
+}

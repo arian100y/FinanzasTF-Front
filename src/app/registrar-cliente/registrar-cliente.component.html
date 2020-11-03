@@ -1,0 +1,123 @@
+
+<h4 class = "title">Registrar Cliente</h4>
+<div class="redBar"></div>
+<h4 class = "title"> </h4>
+<form  method="post">
+   
+  
+  
+        <div class = "child1">
+            <div>
+                <label for="nombre" style="color: rgb(50, 50, 50)"><b>Nombre</b></label>
+            
+            <input type="text" placeholder="Enter Nombre" name="nombre" required [(ngModel)]="cliente.perfil.nombre">
+              <p [hidden]= "!errores.nombre[1]" style = "color: red;">{{errores.nombre[0]}}</p>
+          </div>
+     
+             <div>
+                 <label for="aPaterno" style="color: rgb(50, 50, 50)"><b>Apellido Paterno</b></label>
+              
+             <input type="text" placeholder="Enter Apellido Paterno" name="aPaterno" required [(ngModel)]="cliente.perfil.apellidoP">
+             <p [hidden]= "!errores.aPaterno[1]" style = "color: red;">{{errores.aPaterno[0]}}</p> 
+            </div>
+
+              <div>
+                 <label for="aMaterno" style="color: rgb(50, 50, 50)"><b>Apellido Materno</b></label>
+            
+             <input type="text" placeholder="Enter Apellido Materno" name="aMaterno" required [(ngModel)]="cliente.perfil.apellidoM">
+             <p [hidden]= "!errores.aMaterno[1]" style = "color: red;">{{errores.aMaterno[0]}}</p>  
+            </div>
+
+              <div>
+                 <label for="dni" style="color: rgb(50, 50, 50)"><b>DNI</b></label>
+             
+             <input maxlength = "8"
+             oninput="javascript: if (this.value.length > this.maxLength) 
+             this.value = this.value.slice(0, this.maxLength)"  type="number"
+              placeholder="Enter DNI" name="dni" required [(ngModel)]="cliente.perfil.dni">
+
+              <p [hidden]= "!errores.dni[1]" style = "color: red;">{{errores.dni[0]}}</p>  
+              </div>
+     
+             <div >
+                 <label for="direccion" style="color: rgb(50, 50, 50);"><b>Direccion</b></label>
+             
+             <input type="text" placeholder="Enter Direccion" name="direccion" required [(ngModel)]="cliente.perfil.direccion">
+             <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.direccion[0]}}</p>  
+            </div>
+             <div >
+            <label for="food" style="color: rgb(50, 50, 50);"><b>Moneda</b></label>
+
+             <mat-form-field appearance="fill" >
+                <mat-label>Moneda</mat-label>
+                <mat-select [(ngModel)] = "cliente.moneda" name="food">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <p [hidden]= "!errores.moneda[1]" style = "color: red;">{{errores.moneda[0]}}</p>  
+           
+              
+             </div>
+             
+
+        </div>
+        
+        <div class="child2" > 
+
+         <div>
+            <label for="correo" style="color: rgb(50, 50, 50)"><b>Correo</b></label>
+         
+        <input type="text" placeholder="Enter Correo" name="correo" required [(ngModel)]="cliente.perfil.correo">
+        <p [hidden]= "!errores.correo[1]" style = "color: red;">{{errores.correo[0]}}</p>  
+              
+      </div>
+         <div>
+            <label for="telefono" style="color: rgb(50, 50, 50)"><b>Telefono</b></label>
+         
+        <input maxlength = "9"
+         oninput="javascript: if (this.value.length > this.maxLength) 
+         this.value = this.value.slice(0, this.maxLength)" 
+         type="number" placeholder="Enter Telefono" name="telefono" required [(ngModel)]="cliente.perfil.telefono">
+         <p [hidden]= "!errores.telefono[1]" style = "color: red;">{{errores.telefono[0]}}</p>  
+            
+        </div>
+         <div>
+            <label for="credito" style="color: rgb(50, 50, 50)"><b>Credito</b></label>
+         
+        <input type="number" placeholder="Enter Credito" name="credito" required [(ngModel)]="cliente.credito">
+        <p [hidden]= "!errores.credito[1]" style = "color: red;">{{errores.credito[0]}}</p>  
+             
+      </div>
+        <div>
+           <label for="fecha" style="color: rgb(50, 50, 50)"><b>Fecha</b></label>
+        
+           <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" (dateInput)="addEvent( $event)" (dateChange)="addEvent( $event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <p [hidden]= "!errores.fecha[1]" style = "color: red;">{{errores.fecha[0]}}</p>  
+           
+        </div>
+        
+
+
+
+        <div>
+            <button type="submit" (click)="goToTasa()">Registrar Tasa</button>
+        </div>
+    
+    </div>
+        
+      
+        
+      
+ 
+  
+    
+  </form>
+
+

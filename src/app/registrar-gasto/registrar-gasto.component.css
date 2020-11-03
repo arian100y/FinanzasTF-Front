@@ -1,0 +1,90 @@
+/* Bordered form */
+form {
+  border: 0px solid #f1f1f1;
+}
+label {
+  position: fixed;
+}
+/* Set a style for all buttons */
+* {
+  box-sizing: border-box;
+}
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+
+  margin-left: 40%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.child1 {
+  border-right: 1px solid black;
+
+  float: left;
+  margin-left: 5%;
+  height: 70%;
+  width: 45%;
+
+  padding: 16px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+.child2 {
+  float: left;
+
+  height: 70%;
+  width: 45%;
+
+  padding: 16px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+.title {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 20px;
+}
+.redBar {
+  border-bottom: 2px solid red;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+mat-form-field {
+  width: 30%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+
+  margin-left: 40%;
+}
+
+table {
+  width: 100%;
+}

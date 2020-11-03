@@ -1,0 +1,63 @@
+/* Bordered form */
+
+/* Set a style for all buttons */
+
+.child1 {
+  border-right: 1px solid black;
+
+  float: left;
+  margin-left: 5%;
+  height: 100%;
+  width: 45%;
+
+  padding: 16px;
+}
+.child2 {
+  float: left;
+
+  height: 100%;
+  width: 45%;
+
+  padding: 16px;
+}
+.child2 label {
+}
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+.title {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 20px;
+}
+.redBar {
+  border-bottom: 2px solid red;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  margin-right: 50%;
+  float: right;
+  padding-top: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+#lmfao2 {
+  height: 30px;
+  margin-left: 3%;
+  background-color: darkslategrey;
+  color: white;
+  display: none;
+  border-radius: 25px;
+}
+#lmfao:hover > #lmfao2 {
+  display: inline;
+}

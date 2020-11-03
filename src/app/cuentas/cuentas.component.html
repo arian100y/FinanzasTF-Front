@@ -1,0 +1,50 @@
+
+<h4 class = "title"> Cuentas </h4>
+<div class="redBar"></div>
+<h4 class = "title"> </h4>
+
+<div style="margin-left: 5%; margin-right: 5%; ">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let cliente"> {{cliente.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="perfil.nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let cliente"> {{cliente.perfil.nombre}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="tasa">
+      <th mat-header-cell *matHeaderCellDef> Tasa de Interes </th>
+      <td mat-cell *matCellDef="let cliente"> {{cliente.tasa.monto}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="deudaMonto">
+      <th mat-header-cell *matHeaderCellDef> Monto </th>
+      <td mat-cell *matCellDef="let cliente"> {{cliente.deudas[cliente.deudas.length-1].monto}} </td>
+    </ng-container>
+  
+
+  <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef > Actions </th>
+      <td mat-cell *matCellDef="let row" >
+           <button (click) = "goToGastos(row)" style = "background-color: darkslategray; color:white"mat-raised-button >Edit</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  </div>
+
+

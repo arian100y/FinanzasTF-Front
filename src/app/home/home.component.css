@@ -1,0 +1,25 @@
+.container2 {
+  display: flex;
+  width: 60%;
+  height: 70%;
+  margin-left: 20%;
+
+  margin-top: 5%;
+}
+.container2 div {
+  box-shadow: 2px 2px 2px black;
+  border-radius: 25px;
+  opacity: 90%;
+}
+.child1 {
+  background-color: lightblue;
+  width: 50%;
+  height: 100%;
+  margin-right: 2%;
+}
+.child2 {
+  background-color: orange;
+  width: 50%;
+
+  height: 100%;
+}

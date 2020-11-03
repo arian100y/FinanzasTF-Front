@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+}
+.example-button-row {
+  background-color: blue;
+  position: relative;
+  top: 10px;
+}
+.example-button-row button {
+  float: right;
+  height: 30px;
+  margin-right: 3%;
+  background-color: darkslategrey;
+  color: white;
+}
+
+.title {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 20px;
+}
+.redBar {
+  border-bottom: 2px solid red;
+  margin-left: 5%;
+  margin-right: 5%;
+}
