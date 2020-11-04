@@ -27,7 +27,5 @@ export class ClientesComponent implements OnInit {
       this.dataSource = data;
       this.displayedColumns = ['id', 'perfil.nombre', 'perfil.dni', 'perfil.direccion','perfil.correo'];
     })
-
   }
-
 }
