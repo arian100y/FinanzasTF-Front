@@ -16,4 +16,5 @@ export class Negocio{
     codigo:string;
     clientes:Cliente[];
     ruc:number;
+    perfil_id:number;
 }

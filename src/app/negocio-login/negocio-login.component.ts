@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from '../app.component';
 import { Negocio } from '../models/Negocio';
+import { Perfil } from '../models/Perfil';
 import { NegocioService } from '../services/negocio.service';
 
 @Component({
@@ -15,6 +16,8 @@ export class NegocioLoginComponent implements OnInit {
   error = "";
   ruc : number;
   password:string;
+  negocio:Negocio;
+
   constructor(private cookie:CookieService,private appComponent:AppComponent, private router:Router,private negocioService:NegocioService) { }
 
   ngOnInit(): void {
@@ -31,10 +34,12 @@ export class NegocioLoginComponent implements OnInit {
     if(this.ruc != null && this.password != ""){
       this.negocioService.verifyLogin(negocio).subscribe(data=>{
         
-        
         this.appComponent.loggedInNegocio = true;
-        this.appComponent.info = new Negocio();
-        this.appComponent.info = this.negocioService.getNegocioByRUC(this.ruc);
+        this.appComponent.info = new Perfil();
+        this.negocioService.getNegocioByRUC(this.ruc).subscribe(data =>{
+          this.appComponent.info = data.perfil
+        })
+
         this.cookie.set("negocio",JSON.stringify(data) );
         this.cookie.set("loggedInNegocio","yes");
         
@@ -42,10 +47,8 @@ export class NegocioLoginComponent implements OnInit {
       } ,error =>{this.error = error.error;
       this.valid = false; })
       
-    
     }
     
   }
-
 
 }

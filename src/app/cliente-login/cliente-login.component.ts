@@ -15,6 +15,7 @@ export class ClienteLoginComponent implements OnInit {
 
   codigoNegocio:string;
   clienteDNI:number;
+  cliente:Cliente;
 
   constructor(private cookie:CookieService,private appComponent:AppComponent,private router:Router, private clienteService:ClienteService) { }
 
@@ -36,7 +37,10 @@ export class ClienteLoginComponent implements OnInit {
         {
           this.appComponent.loggedInCliente = true;
           this.appComponent.info = new Cliente();
-          this.appComponent.info = this.clienteService.getClientesByDNI(this.clienteDNI);
+
+          this.clienteService.getClienteByDNI(this.clienteDNI).subscribe(data =>{
+            this.appComponent.info = data.perfil;
+          })
 
           this.cookie.set("cliente",JSON.stringify(data) );
           this.cookie.set("loggedInCliente","yes");

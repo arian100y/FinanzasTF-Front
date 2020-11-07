@@ -18,6 +18,7 @@ export class Cliente{
     perfil:Perfil;
     tasa:Tasa;
     deudas:Deuda[];
+    perfil_id:number;
 
     
 

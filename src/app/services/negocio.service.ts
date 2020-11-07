@@ -26,7 +26,11 @@ export class NegocioService {
 
   }
 
-  getNegocioByRUC(RUC:Number):Observable<any>{
-    return this.http.get<Negocio>(`${this.url}/${RUC}`);
+  getNegocioByRUC(ruc:Number):Observable<Negocio>{
+    return this.http.get<Negocio>(`${this.url}/RUC=${ruc}`);
+  }
+
+  getNegociobyPerfil_id(perfil_id:Number):Observable<Negocio>{
+    return this.http.get<Negocio>(`${this.url}/perfil_id=${perfil_id}`);
   }
 }

@@ -17,7 +17,6 @@ export class ClienteService {
 
   verifyLogin(nego:Negocio):Observable<any>{
     return this.http.post<any>(`${this.url}/login`,nego);
-
     }
 
   registrar(cliente:Cliente):Observable<Cliente>{
@@ -26,14 +25,17 @@ export class ClienteService {
 
   saveCliente(cliente:Cliente){
     this.cliente.next(cliente);
-    
   }
 
   getClientes() : Observable<Cliente[]>{
     return this.http.get<Cliente[]>(this.url);
   }
 
-  getClientesByDNI(DNI:Number):Observable<any>{
-    return this.http.get<Cliente>(`${this.url}/${DNI}`);
+  getClienteByDNI(DNI:Number):Observable<Cliente>{
+    return this.http.get<Cliente>(`${this.url}/DNI=${DNI}`);
+  }
+
+  getClientebyPerfil_id(perfil_id:Number):Observable<Cliente>{
+    return this.http.get<Cliente>(`${this.url}/perfil_id=${perfil_id}`);
   }
 }
