@@ -31,7 +31,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { PagosNegocioComponent } from './pagos-negocio/pagos-negocio.component';
 import { GastosCobrosNegocioComponent } from './gastos-cobros-negocio/gastos-cobros-negocio.component';
 import { RegistrarGastoComponent } from './registrar-gasto/registrar-gasto.component';
-import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+import { NotificacionesComponent } from './notificaciones-negocio/notificaciones-negocio.component';
 import { MatCardModule } from '@angular/material/card';
 
 @NgModule({

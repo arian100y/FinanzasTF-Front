@@ -34,7 +34,7 @@ export class NegocioLoginComponent implements OnInit {
         
         this.appComponent.loggedInNegocio = true;
         this.appComponent.info = new Negocio();
-        this.appComponent.info.id = data.id;
+        this.appComponent.info = this.negocioService.getNegocioByRUC(this.ruc);
         this.cookie.set("negocio",JSON.stringify(data) );
         this.cookie.set("loggedInNegocio","yes");
         

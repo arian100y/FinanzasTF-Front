@@ -8,7 +8,7 @@ import { GastosCobrosNegocioComponent } from './gastos-cobros-negocio/gastos-cob
 import { HomeComponent } from './home/home.component';
 import { Notificacion } from './models/Notificacion';
 import { NegocioLoginComponent } from './negocio-login/negocio-login.component';
-import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+import { NotificacionesComponent } from './notificaciones-negocio/notificaciones-negocio.component';
 import { PagoComponent } from './pago/pago.component';
 import { PagosNegocioComponent } from './pagos-negocio/pagos-negocio.component';
 import { PerfilComponent } from './perfil/perfil.component';

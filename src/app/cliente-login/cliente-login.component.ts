@@ -36,14 +36,13 @@ export class ClienteLoginComponent implements OnInit {
         {
           this.appComponent.loggedInCliente = true;
           this.appComponent.info = new Cliente();
-          this.appComponent.info = data;
+          this.appComponent.info = this.clienteService.getClientesByDNI(this.clienteDNI);
 
           this.cookie.set("cliente",JSON.stringify(data) );
           this.cookie.set("loggedInCliente","yes");
       this.router.navigate(['pagos-cliente']);
       } ,error =>console.log(error.error) )
       
-    
     }
     
   }
