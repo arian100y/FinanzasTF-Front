@@ -22,13 +22,16 @@ input::-webkit-inner-spin-button {
 
 /* Set a style for all buttons */
 button {
-  background-color: red;
+  background-color: rgb(187, 0, 0);
   color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 50%;
+  border-radius: 25px;
 }
 
 /* Add a hover effect for buttons */

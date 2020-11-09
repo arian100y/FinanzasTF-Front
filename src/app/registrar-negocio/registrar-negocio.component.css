@@ -42,6 +42,7 @@ button {
   border: none;
   cursor: pointer;
   width: 50%;
+  border-radius: 25px;
 }
 .child1 {
   border-right: 1px solid black;

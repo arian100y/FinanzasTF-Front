@@ -16,12 +16,15 @@ input[type="password"] {
 
 /* Set a style for all buttons */
 button {
-  background-color: red;
+  background-color: rgb(197, 0, 0);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
+  border-radius: 25px;
+  letter-spacing: 2px;
+  font-size: 20px;
   width: 50%;
 }
 

@@ -47,6 +47,7 @@ button {
   border: none;
   cursor: pointer;
   width: 50%;
+  border-radius: 25px;
 }
 .child2 {
   float: left;
