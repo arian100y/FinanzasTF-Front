@@ -35,7 +35,16 @@ export class RegistrarNegocioComponent implements OnInit {
     this.negocio = new Negocio();
     this.resetErrors(); 
    }
+    
+    isNumberKey(evt){
+      console.log(evt.keyCode);
+      let charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode != 46 && charCode > 31 
+        && (charCode < 48 || charCode > 57))
+          return false;
 
+      return true;
+   }
   ngOnInit(): void {
     
     
@@ -102,6 +111,8 @@ export class RegistrarNegocioComponent implements OnInit {
       
       
       this.router.navigate(['negocio-login']);
+    }, (err)=>{
+      this.loading = false;
     });
 
     }else{

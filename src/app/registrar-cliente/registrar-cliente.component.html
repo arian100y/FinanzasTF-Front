@@ -31,9 +31,11 @@
               <div>
                  <label for="dni" style="color: rgb(50, 50, 50)"><b>DNI</b></label>
              
-             <input maxlength = "8"
+             <input  maxlength="8"
+             (keypress)="isNumberKey($event)"
              oninput="javascript: if (this.value.length > this.maxLength) 
-             this.value = this.value.slice(0, this.maxLength)"  type="number"
+        this.value = this.value.slice(0, this.maxLength)"  
+              type="number"
               placeholder="Enter DNI" name="dni" required [(ngModel)]="cliente.perfil.dni">
 
               <p [hidden]= "!errores.dni[1]" style = "color: red;">{{errores.dni[0]}}</p>  
@@ -45,6 +47,7 @@
              <input type="text" placeholder="Enter Direccion" name="direccion" required [(ngModel)]="cliente.perfil.direccion">
              <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.direccion[0]}}</p>  
             </div>
+
              <div >
             <label for="food" style="color: rgb(50, 50, 50);"><b>Moneda</b></label>
 
@@ -76,9 +79,10 @@
          <div>
             <label for="telefono" style="color: rgb(50, 50, 50)"><b>Telefono</b></label>
          
-        <input maxlength = "9"
-         oninput="javascript: if (this.value.length > this.maxLength) 
-         this.value = this.value.slice(0, this.maxLength)" 
+        <input maxlength="8"
+             (keypress)="isNumberKey($event)"
+             oninput="javascript: if (this.value.length > this.maxLength) 
+        this.value = this.value.slice(0, this.maxLength)"  
          type="number" placeholder="Enter Telefono" name="telefono" required [(ngModel)]="cliente.perfil.telefono">
          <p [hidden]= "!errores.telefono[1]" style = "color: red;">{{errores.telefono[0]}}</p>  
             

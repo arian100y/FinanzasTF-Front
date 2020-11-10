@@ -13,13 +13,13 @@
      <div>
         <label for="monto" style="color: rgb(50, 50, 50)"><b>Monto</b></label>
     
-    <input  type="number" placeholder="Enter Monto" name="monto" required  [(ngModel)]= "gasto.monto">
+    <input (keypress)="isNumberKey($event)" type="number" placeholder="Enter Monto" name="monto" required  [(ngModel)]= "gasto.monto">
      </div>
      
      <div>
         <label for="cargo" style="color: rgb(50, 50, 50)"><b>Cargo de Envio</b></label>
     
-    <input type="number" placeholder="Enter Cargo de Envio" name="cargo" required  [(ngModel)]= "gasto.envioMonto">
+    <input (keypress)="isNumberKey($event)" type="number" placeholder="Enter Cargo de Envio" name="cargo" required  [(ngModel)]= "gasto.envioMonto">
      </div>
 
      <div>

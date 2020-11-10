@@ -34,7 +34,12 @@
               <div>
                  <label for="dni" style="color: rgb(50, 50, 50)"><b>DNI</b></label>
              
-             <input type="number" placeholder="Enter DNI" name="dni" required [(ngModel)]="negocio.perfil.dni">
+             <input maxlength="8"
+             (keypress)="isNumberKey($event)"
+             oninput="javascript: if (this.value.length > this.maxLength) 
+        this.value = this.value.slice(0, this.maxLength)"  
+             type="number" placeholder="Enter DNI" name="dni"
+              required [(ngModel)]="negocio.perfil.dni">
              <p [hidden]= "!errores.dni[1]" style = "color: red;">{{errores.dni[0]}}</p>
     
             </div>
@@ -42,7 +47,9 @@
              <div>
                  <label for="ruc" style="color: rgb(50, 50, 50)"><b>Razon Social</b></label>
              
-             <input type="number" placeholder="Enter RUC" name="ruc" required [(ngModel)]="negocio.ruc">
+             <input
+             (keypress)="isNumberKey($event)"
+              type="number" placeholder="Enter RUC" name="ruc" required [(ngModel)]="negocio.ruc">
              <p [hidden]= "!errores.ruc[1]" style = "color: red;">{{errores.ruc[0]}}</p>
     
             </div>
@@ -68,9 +75,11 @@
          <div>
             <label for="telefono" style="color: rgb(50, 50, 50)"><b>Telefono</b></label>
          
-        <input maxlength = "9"
+        <input maxlength="9"
+        (keypress)="isNumberKey($event)"
         oninput="javascript: if (this.value.length > this.maxLength) 
-        this.value = this.value.slice(0, this.maxLength)"  type="number" placeholder="Enter Telefono" name="telefono" required [(ngModel)]="negocio.perfil.telefono">
+   this.value = this.value.slice(0, this.maxLength)"   
+         type="number" placeholder="Enter Telefono" name="telefono" required [(ngModel)]="negocio.perfil.telefono">
          </div>
          <p [hidden]= "!errores.telefono[1]" style = "color: red;">{{errores.telefono[0]}}</p>
     

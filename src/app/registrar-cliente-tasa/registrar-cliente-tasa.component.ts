@@ -79,6 +79,15 @@ export class RegistrarClienteTasaComponent implements OnInit {
     return errors;
   }
 
+  isNumberKey(evt){
+    console.log(evt.keyCode);
+    let charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode != 46 && charCode > 31 
+      && (charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
+ }
   registerCliente(){
     //let client = this.regClienteComponent.cliente;
     this.loading= true;

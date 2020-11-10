@@ -9,7 +9,7 @@ label {
   letter-spacing: 2px;
 }
 p{
-  margin-left: 40%;
+  margin-left: 45%;
 }
 
 * {
@@ -140,5 +140,6 @@ mat-form-field {
   border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 25px;
-  margin-left: 40%;
+  margin-left: 45%;
+
 }
