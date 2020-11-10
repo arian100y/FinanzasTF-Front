@@ -9,18 +9,23 @@ import { Router } from '@angular/router';
   selector: 'app-pago',
   templateUrl: './pago.component.html',
   styleUrls: ['./pago.component.css'],
-  providers:[DatePipe]
+  providers: [DatePipe]
 })
 export class PagoComponent implements OnInit {
 
-  dataSource =[];
- displayedColumns = [];
-  date:Date;
-  dateString:String;
-  info : string;
-  cliente:Cliente;
+  dataSource = [];
+  displayedColumns = [];
+  date: Date;
+  dateString: String;
+  info: string;
+  cliente: Cliente;
   loading = false;
-  constructor(private router:Router,private datePipe:DatePipe,private cookies:CookieService,private gastoService:GastoService) { }
+
+  tipoTasa = ['Tasa simple', 'Tasa nominal', 'Tasa efectiva']
+  tipoTasaAbreviacion = ['S', 'N', 'E']
+  tipoPeriodo = ['D', 'M', 'B', 'A']
+
+  constructor(private router: Router, private datePipe: DatePipe, private cookies: CookieService, private gastoService: GastoService) { }
 
   ngOnInit(): void {
     this.date = new Date();
@@ -29,11 +34,12 @@ export class PagoComponent implements OnInit {
     //HACER DINAMICO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     this.dataSource = this.cliente.deudas;
     this.displayedColumns = ['id', 'fecha', 'valor'];
-    
+
   }
 
-  goToGastos(element){
+  goToGastos(element) {
     this.gastoService.saveGasto(element.id);
     this.router.navigate(['gastos-actuales'])
   }
 }
+

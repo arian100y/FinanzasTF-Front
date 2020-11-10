@@ -17,8 +17,8 @@ export class NegocioLoginComponent implements OnInit {
   ruc : number;
   password:string;
   negocio:Negocio;
+
   loading = false;
-  
   constructor(private cookie:CookieService,private appComponent:AppComponent, private router:Router,private negocioService:NegocioService) { }
 
   ngOnInit(): void {
@@ -48,12 +48,11 @@ export class NegocioLoginComponent implements OnInit {
         this.appComponent.info = new Perfil();
         this.negocioService.getNegocioByRUC(this.ruc).subscribe(data =>{
           this.appComponent.info = data.perfil
-        })
-
-        this.cookie.set("negocio",JSON.stringify(data) );
-        this.cookie.set("loggedInNegocio","yes");
+          this.cookie.set("negocio",JSON.stringify(data) );
+          this.cookie.set("loggedInNegocio","yes");
         
-      this.router.navigate(['clientes']);
+          this.router.navigate(['clientes'])
+        });
       } ,error =>{this.error = error.error;
         this.loading=false;
       this.valid = false; })

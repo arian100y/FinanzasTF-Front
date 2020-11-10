@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Gasto } from '../models/Gasto';
+import { AppComponent } from '../app.component';
 import { GastoService } from '../services/gasto.service';
 
 @Component({
@@ -16,12 +17,12 @@ export class GastoComponent implements OnInit {
   loading = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private gastoService:GastoService) { }
+  constructor(private gastoService:GastoService, private appComponent:AppComponent) { }
 
   ngOnInit(): void {
     setTimeout(() => this.dataSource.paginator = this.paginator);
     //this.dataSource.paginator = this.paginator;
-    this.gastoService.getGastosByDeuda().subscribe(data=>{
+    this.gastoService.getAllGastosByUserId(this.appComponent.info.id).subscribe(data=>{
       this.dataSource =new MatTableDataSource<Gasto>(data);
       this.loading = true;
     })
