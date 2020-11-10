@@ -37,6 +37,7 @@ export class RegistrarClienteComponent implements OnInit {
     {value: 'soles', viewValue: 'Soles'},
     {value: 'dolares', viewValue: 'Dolar'}
   ];
+  todayDate:Date = new Date();
   deuda:Deuda;
   loading = false;
   public cliente:Cliente;
@@ -72,10 +73,13 @@ export class RegistrarClienteComponent implements OnInit {
   addEvent(event: MatDatepickerInputEvent<Date>){
     this.cliente.fechaEmision = event.value.toISOString();
     let deudaDate = event.value;
+  
+    let date = new Date(deudaDate);
     
-    deudaDate.setMonth(deudaDate.getMonth()+1);
-    this.deuda.fecha =deudaDate.toISOString();
-   
+    
+    date.setMonth(deudaDate.getMonth()+1);
+    this.deuda.fecha =date.toISOString();
+    
     
   }
   checkForm():{}{
@@ -110,7 +114,7 @@ export class RegistrarClienteComponent implements OnInit {
     if(this.cliente.moneda == "") {
       errors["moneda"] = ["Moneda no puede estar vacio.", true]
     }
-    console.log(this.cliente.credito);
+    
     if( this.cliente.credito === "" || this.cliente.credito === null){
       errors["credito"] = ["Credito no puede estar vacio.", true]
     } else
@@ -127,7 +131,7 @@ export class RegistrarClienteComponent implements OnInit {
   }
   
   isNumberKey(evt){
-    console.log(evt.keyCode);
+   
     let charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode != 46 && charCode > 31 
       && (charCode < 48 || charCode > 57))
@@ -143,7 +147,7 @@ export class RegistrarClienteComponent implements OnInit {
  this.cliente.negocio_id = this.appComponent.info.id;
     this.cliente.deudas.push(this.deuda);
 
-    console.log(this.cliente);
+    
     this.clienteService.saveCliente(this.cliente);
     
       

@@ -16,8 +16,9 @@ export class ClienteLoginComponent implements OnInit {
   codigoNegocio:string;
   clienteDNI:number;
   loading = false;
+  valid = true;
   constructor(private cookie:CookieService,private appComponent:AppComponent,private router:Router, private clienteService:ClienteService) { }
-
+  error = ""
   ngOnInit(): void {
     this.codigoNegocio = "";
     this.clienteDNI = null;
@@ -50,8 +51,9 @@ export class ClienteLoginComponent implements OnInit {
           this.cookie.set("cliente",JSON.stringify(data) );
           this.cookie.set("loggedInCliente","yes");
       this.router.navigate(['pagos-cliente']);
-      } ,error =>{console.log(error.error) ;
-      this.loading = false;})
+      } ,error =>{this. error = error.error; 
+      this.loading = false;
+      this.valid = false;})
       
     
     }

@@ -1,8 +1,8 @@
 <h4 class = "title" >Gastos y Cobros</h4>
 <div class="redBar"></div>
 <h4 class = "title" ></h4>
-
-<div class="child1" >
+<div class="loader" [hidden] = '!loading'></div>
+<div class="child1" [hidden] = 'loading' >
   <h1 id="lmfaoChild">Historial de Deudas</h1>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -40,13 +40,13 @@
      
       
 </div>
-<div class="child2">
+<div class="child2"  [hidden] = 'loading' >
     <div style="background-color: red;">
         <h3 style="float: right;  position: relative;">{{dateString}}</h3>
     </div>
     
     <div>
-       <h1 style="float: left; width: 100%;">NAME JUAN</h1> 
+       <h1 style="float: left; width: 100%;">AKIRA FALTA HACER ESTA PARTE, MIRA EL MOCKUP Y COPIALO PLS</h1> 
     </div>
     
     <h3 style="float: left; width: 100%;">{{cliente.perfil.nombre}}</h3> 

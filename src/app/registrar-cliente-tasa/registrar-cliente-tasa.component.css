@@ -21,12 +21,22 @@ input[type="number"] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 2px solid #ccc;
+  border: 2px solid rgb(158, 158, 158);
   box-sizing: border-box;
   border-radius: 25px;
   outline: none;
   transition: all 0.4s;
   margin-left: 40%;
+}
+input:focus{
+  border: 2px solid black;
+
+}
+input::placeholder{
+  transition: all 0.3s;
+}
+input:hover::placeholder{
+  font-size: 17px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
