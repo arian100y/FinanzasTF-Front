@@ -105,10 +105,12 @@
         
 
 
-
         <div>
-            <button type="submit" (click)="goToTasa()">Registrar Tasa</button>
-        </div>
+          <button style="margin-top: 40px; margin-left: 40%;"
+           type="submit" (click)="goToTasa()">
+           <p style="margin-left: -5px;" [hidden] = "loading">Registrar Tasa</p>
+           <div [hidden] = "!loading" class="loader"></div></button>
+      </div>
     
     </div>
         

@@ -14,7 +14,7 @@ export class CuentasComponent implements OnInit {
   displayedColumns: string[] ;
   dataSource = [];
   public clientes =[];
- 
+ loading = false;
   constructor(private clienteService: ClienteService,private router:Router) { }
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class CuentasComponent implements OnInit {
       this.clientes = data;
       
       this.dataSource = data;
-      
+      this.loading = true;
       this.displayedColumns = ['id', 'perfil.nombre', 'tasa', 'deudaMonto','actions'];
     })
 

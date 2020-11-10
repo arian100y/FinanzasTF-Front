@@ -23,6 +23,7 @@ input:focus{
 
 }
 
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -32,6 +33,7 @@ label{
   font-family:'Calibri';
   font-size: 25px;
   letter-spacing: 1px;
+  
 }
 
 /* Set a style for all buttons */

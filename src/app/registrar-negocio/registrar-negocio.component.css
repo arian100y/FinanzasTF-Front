@@ -4,6 +4,9 @@ form {
 }
 label {
   position: absolute;
+  padding-top: 15px;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 p{
   margin-left: 40%;
@@ -49,14 +52,18 @@ input::-webkit-inner-spin-button {
 button {
   background-color: rgb(50, 50, 50);
   color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
+  height: 50px;
   width: 50%;
   border-radius: 25px;
-  transition: all 0.3s;
-  outline:none;
+  transition: all 0.2s;
+  margin-top: 2%;
+  outline: none;
 }
 .child1 {
   border-right: 1px solid black;
@@ -108,4 +115,20 @@ span.psw {
   margin-right: 50%;
   float: right;
   padding-top: 16px;
+}
+
+.loader {
+  margin: auto;
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  margin-top: -5px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

@@ -34,10 +34,15 @@ li a:hover {
 
 .test {
   float: right;
-  background-color: darkslategrey;
+  background-color: rgb(54, 54, 54);
+  cursor: pointer;
+
+}
+.test :hover {
+  float: right;
+  background-color: rgb(95, 95, 95);
   cursor: pointer;
 }
-
 .footer {
   position: fixed;
   left: 0;

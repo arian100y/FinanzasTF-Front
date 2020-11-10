@@ -13,7 +13,7 @@
      </div>
 
      <div >
-      <label for="food" style="color: rgb(50, 50, 50);"><b>Tipo</b></label>
+      <label for="food" style="padding-top: 60px;color: rgb(50, 50, 50);"><b>Tipo</b></label>
 
        <mat-form-field appearance="fill" >
           <mat-label>Tipo</mat-label>
@@ -35,7 +35,7 @@
           
       </div>
       <div >
-        <label for="food2" style="color: rgb(50, 50, 50);"><b>Ingrese Tiempo</b></label>
+        <label for="food2" style="padding-top: 60px;color: rgb(50, 50, 50);"><b>Ingrese Tiempo</b></label>
 
          <mat-form-field appearance="fill" >
             <mat-label>Tiempo</mat-label>
@@ -51,10 +51,13 @@
          </div>
 
        
-             
-        <div>
-            <button type="submit" (click)="registerCliente()">Registrar Cliente!</button>
-        </div>
+         <div>
+          <button style="margin-top: 40px; margin-left: 40%;"
+           type="submit" (click)="registerCliente()">
+           <p style="margin-left: -5px;" [hidden] = "loading">Registrar Cliente!</p>
+           <div [hidden] = "!loading" class="loader"></div></button>
+      </div>   
+        
     
          
 </div>

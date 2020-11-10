@@ -3,7 +3,10 @@ form {
   border: 0px solid #f1f1f1;
 }
 label {
-  position: fixed;
+  position: absolute;
+  padding-top: 15px;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 * {
   box-sizing: border-box;
@@ -14,13 +17,15 @@ input[type="text"],
 input[type="password"],
 input[type="checkbox"],
 input[type="number"] {
-  width: 40%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   box-sizing: border-box;
-
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.4s;
   margin-left: 40%;
 }
 input::-webkit-outer-spin-button,
@@ -36,8 +41,9 @@ mat-form-field {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-
-  margin-left: 40%;
+  border-radius: 25px;
+  margin-left: 45%;
+  margin-top: 5%;
 }
 .child1 {
   border-right: 1px solid black;
@@ -71,7 +77,13 @@ p{
   margin-left: 5%;
   margin-top: 2vh;
   color: rgb(50, 50, 50);
-  font-size: 20px;
+  font-size: 30px;
+}
+.title2 {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 25px;
 }
 .redBar {
   border-bottom: 2px solid red;
@@ -92,13 +104,18 @@ table {
 button {
   background-color: rgb(50, 50, 50);
   color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
+  height: 50px;
   width: 50%;
   border-radius: 25px;
-  
+  transition: all 0.2s;
+  margin-top: 2%;
+  outline: none;
 }
 
 .text {

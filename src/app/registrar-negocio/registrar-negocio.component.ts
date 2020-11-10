@@ -11,6 +11,7 @@ import { AppComponent } from '../app.component';
 })
 export class RegistrarNegocioComponent implements OnInit {
 
+  loading = false;
   errores = {
     nombre:["",false],
     aMaterno:null,
@@ -93,9 +94,9 @@ export class RegistrarNegocioComponent implements OnInit {
   }
 
   registerNegocio(){
-    
+    this.loading = true;
     let errs = this.checkForm()
-
+    
     if(Object.keys(errs).length === 0){
       this.negocioService.postNegocio(this.negocio).subscribe(data=>{
       
@@ -106,6 +107,7 @@ export class RegistrarNegocioComponent implements OnInit {
     }else{
       Object.keys(errs).forEach(key=>{
         this.errores[key] = errs[key];
+        this.loading = false;
       })
     }
     

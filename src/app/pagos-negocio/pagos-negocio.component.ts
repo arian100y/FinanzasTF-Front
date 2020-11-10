@@ -11,13 +11,13 @@ export class PagosNegocioComponent implements OnInit {
 clientes = [];
 displayedColumns :String[];
   constructor(private clienteService:ClienteService, ) { }
-
+  loading = false;
   ngOnInit(): void {
     this.clienteService.getClientes().subscribe(data=>{
     this.clientes = data;
     
     this.dataSource = data;
-    
+    this.loading = true;
     this.displayedColumns = ['id', 'nombre', 'dni', 'monto','estado'];
   })
   }

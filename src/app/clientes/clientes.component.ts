@@ -19,11 +19,11 @@ export class ClientesComponent implements OnInit {
       this.router.navigate(['']);
     }
    }
-
+   loading = false;
   ngOnInit(): void {
     this.clienteService.getClientes().subscribe(data=>{
       this.clientes = data;
-      
+      this.loading = true;
       this.dataSource = data;
       this.displayedColumns = ['id', 'perfil.nombre', 'perfil.dni', 'perfil.direccion','perfil.correo'];
     })

@@ -1,5 +1,5 @@
-<h4 class = "title">Iniciar Sesion para Clientes</h4>
-<form action="action_page.php" method="post">
+<h4 class = "title">Iniciar Sesion Para Clientes</h4>
+<form >
    
   
     <div class="container">
@@ -17,12 +17,15 @@
         </div>
       
         <div>
-            <button (click)="validateLogin()"type="submit">Ingresar</button>
-        </div>
+         <button (click)="validateLogin()" type="submit">
+            <p [hidden] = "loading">Ingresar</p>
+            <div [hidden] = "!loading" class="loader"></div>
+         </button>
+     </div>
       
         <div>
            <label>
-        <input type="checkbox" checked="checked" name="remember"> Recuerdate
+        <input type="checkbox" checked="checked" name="remember"> Recuerdame
       </label>
  
         </div>

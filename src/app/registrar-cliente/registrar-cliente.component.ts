@@ -38,7 +38,7 @@ export class RegistrarClienteComponent implements OnInit {
     {value: 'dolares', viewValue: 'Dolar'}
   ];
   deuda:Deuda;
-
+  loading = false;
   public cliente:Cliente;
 
   constructor(private router:Router, 
@@ -126,6 +126,7 @@ export class RegistrarClienteComponent implements OnInit {
     return errors;
   }
   goToTasa(){
+    this.loading = true;
     this.resetErrors();
     let errs = this.checkForm()
     if(Object.keys(errs).length === 0){
@@ -143,6 +144,7 @@ export class RegistrarClienteComponent implements OnInit {
       Object.keys(errs).forEach(key=>{
         this.errores[key] = errs[key];
       })
+      this.loading = false;
     }
    
   
