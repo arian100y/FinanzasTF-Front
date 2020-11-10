@@ -13,26 +13,38 @@ p{
   box-sizing: border-box;
 }
 /* Full-width inputs */
+
+/* Full-width inputs */
 input[type="text"],
 input[type="password"],
 input[type="number"] {
-  width: 40%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   box-sizing: border-box;
-
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.4s;
   margin-left: 40%;
+}
+input:focus{
+  border: 2px solid black;
+
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.child1 label {
-}
 
+.child2 label{
+  margin-left: 5%;
+}
+.child1 label{
+  margin-left: 2%;
+}
 /* Set a style for all buttons */
 button {
   background-color: rgb(50, 50, 50);
@@ -43,16 +55,21 @@ button {
   cursor: pointer;
   width: 50%;
   border-radius: 25px;
+  transition: all 0.3s;
+  outline:none;
 }
 .child1 {
   border-right: 1px solid black;
   
   float: left;
   margin-left: 5%;
-  height: 60vh;
+  height: 70vh;
   width: 45%;
   
   padding: 16px;
+}
+.child1 *{
+  margin-bottom:  2%;
 }
 .child2 {
   float: left;
@@ -62,18 +79,23 @@ button {
 
   padding: 16px;
 }
-.child2 label {
-}
+
 /* Add a hover effect for buttons */
 button:hover {
-  opacity: 0.8;
+  background-color: rgb(92, 92, 92);
 }
 
 .title {
   margin-left: 5%;
   margin-top: 2vh;
   color: rgb(50, 50, 50);
-  font-size: 20px;
+  font-size: 30px;
+}
+.title2 {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 25px;
 }
 .redBar {
   border-bottom: 2px solid red;

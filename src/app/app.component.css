@@ -29,6 +29,7 @@ li a {
 li a:hover {
   background-color: rgb(255, 57, 57);
   color: white;
+  transition: all 0.2s;
 }
 
 .test {

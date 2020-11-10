@@ -1,7 +1,7 @@
 
 <h3 class = "title">Bienvenido</h3>
 <div class="redBar"></div>
-<h4 class = "title">Registrar Negocio</h4>
+<p class = "title2" >Registrar Negocio</p>
 <form  method="post">
    
   
@@ -78,10 +78,10 @@
            <label for="password" style="color: rgb(50, 50, 50)"><b>Password</b></label>
         
          <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="negocio.password">
-         <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.direccion[0]}}</p>
+         <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.password[0]}}</p>
     
          </div>
-        <div style="margin-top: 15px;margin-bottom: 15px; margin-left: 5%;">
+        <div style="margin-top: 15px;margin-bottom: 15px; margin-right:5%;">
             <p style="color: red;">A continuacion creara un codigo con el cual los clientes podran unirse directamente
                 a su negocio.
             </p>
@@ -97,7 +97,7 @@
 
 
         <div>
-            <button style="margin-top: 40px; margin-left: 200px;" type="submit" (click)="registerNegocio()">Registrar</button>
+            <button style="margin-top: 40px; margin-left: 40%;" type="submit" (click)="registerNegocio()">Registrar</button>
         </div>
     
     </div>

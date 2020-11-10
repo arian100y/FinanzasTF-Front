@@ -15,6 +15,7 @@ export class NegocioLoginComponent implements OnInit {
   error = "";
   ruc : number;
   password:string;
+  loading = false;
   constructor(private cookie:CookieService,private appComponent:AppComponent, private router:Router,private negocioService:NegocioService) { }
 
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class NegocioLoginComponent implements OnInit {
     let negocio = new Negocio();
     negocio.ruc=this.ruc;
     negocio.password = this.password;
-      
+    this.loading = true;
     if(this.ruc != null && this.password != ""){
       this.negocioService.verifyLogin(negocio).subscribe(data=>{
         
@@ -40,6 +41,7 @@ export class NegocioLoginComponent implements OnInit {
         
       this.router.navigate(['clientes']);
       } ,error =>{this.error = error.error;
+        this.loading=false;
       this.valid = false; })
       
     
