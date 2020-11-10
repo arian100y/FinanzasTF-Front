@@ -1,5 +1,5 @@
-<h4 class = "title">Iniciar Sesion para Clientes</h4>
-<form action="action_page.php" method="post">
+<h4 class = "title">Iniciar Sesion Para Clientes</h4>
+<form >
    
   
     <div class="container">
@@ -7,8 +7,16 @@
            <label for="dni" style="color: rgb(50, 50, 50)"><b>DNI</b></label>
         </div>
         <div>
-       <input type="text" placeholder="Enter DNI" name="dni" required [(ngModel)]="clienteDNI">
+       <input  maxlength="8"
+       (keypress)="isNumberKey($event)"
+       oninput="javascript: if (this.value.length > this.maxLength) 
+  this.value = this.value.slice(0, this.maxLength)"  
+
+       type="text" placeholder="Enter DNI" name="dni" required [(ngModel)]="clienteDNI">
         </div>
+
+
+
         <div>
            <label for="codigo" style="color: rgb(50, 50, 50)"  ><b>Codigo de Negocio</b></label>
         </div>
@@ -16,13 +24,22 @@
          <input type="text" placeholder="Enter Codigo de Negocio" name="codigo" required  [(ngModel)]="codigoNegocio">
         </div>
       
+
+        <div [hidden]="valid">
+         <p style="color: red; font-size: 20px;">{{error}}</p>
+       </div>
+
+
         <div>
-            <button (click)="validateLogin()"type="submit">Ingresar</button>
-        </div>
+         <button (click)="validateLogin()" type="submit">
+            <p [hidden] = "loading">Ingresar</p>
+            <div [hidden] = "!loading" class="loader"></div>
+         </button>
+     </div>
       
         <div>
            <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
+        <input type="checkbox" checked="checked" name="remember"> Recuerdame
       </label>
  
         </div>

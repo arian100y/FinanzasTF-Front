@@ -1,5 +1,5 @@
 
-  <div class ="example-button-row">
+  <div  [hidden] = '!loading' class ="example-button-row">
    
     <div style="float: left;margin-left: 5%;">
          <h1 >Clientes</h1>
@@ -9,7 +9,8 @@
   </div>
 
   <div style="margin-left: 5%; margin-right: 5%; ">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+  <table [hidden] ="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -47,7 +48,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+  <div class="loader" [hidden] = 'loading'></div>
   </div>
 
 

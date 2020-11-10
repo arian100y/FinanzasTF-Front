@@ -5,35 +5,71 @@ form {
 
 /* Full-width inputs */
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   box-sizing: border-box;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.4s;
+  font-size: 20px;
+}
+input:focus{
+  border: 2px solid black;
+
+}
+input::placeholder{
+  transition: all 0.3s;
+}
+input:hover::placeholder{
+  font-size: 25px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+label{
+  font-family:'Calibri';
+  font-size: 25px;
+  letter-spacing: 1px;
 }
 
 /* Set a style for all buttons */
 button {
-  background-color: red;
+  background-color: rgb(187, 0, 0);
   color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 50%;
+  height: 50px;
+  width: 20%;
+  border-radius: 25px;
+  transition: all 0.2s;
+  margin-top: 2%;
+  outline: none;
 }
 
 /* Add a hover effect for buttons */
 button:hover {
-  opacity: 0.8;
+  background-color: rgb(182, 65, 65);
+
 }
 
 .title {
   text-align: center;
-  margin-top: 8vh;
+  margin-top: 9vh;
   color: rgb(50, 50, 50);
+  font-size: 40px;
+  margin-bottom: 4%;
+  font-family: 'Cambria';
 }
 /* Extra style for the cancel button (red) */
 .cancelbtn {
@@ -46,9 +82,14 @@ button:hover {
 
 /* Add padding to containers */
 .container {
-  margin-left: 28%;
+ 
+  
   padding: 16px;
-  position: fixed;
+  
+  text-align: center;
+}
+.container *{
+  margin-bottom: 1%;
 }
 
 /* The "Forgot password" text */
@@ -58,13 +99,23 @@ span.psw {
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
+
+.input {
+  display: block;
+}
+
+.loader {
+  margin: auto;
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  margin-top: -5px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

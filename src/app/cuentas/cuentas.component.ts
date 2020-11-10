@@ -15,6 +15,7 @@ import { AppComponent } from '../app.component';
 export class CuentasComponent implements OnInit {
   displayedColumns: string[] ;
   dataSource = [];
+  loading = false;
   public clientes =[];
  
   constructor(private negocioService: NegocioService,private clienteService: ClienteService,private router:Router,private appComponent:AppComponent) { }
@@ -24,6 +25,7 @@ export class CuentasComponent implements OnInit {
     this.negocioService.getNegociobyPerfil_id(this.appComponent.info.id).subscribe(data=>{
       this.clientes = data.clientes;
       this.dataSource = data.clientes;
+      this.loading = true;
       this.displayedColumns = ['id', 'perfil.nombre', 'tasa', 'deudaMonto','actions'];
     })
   }

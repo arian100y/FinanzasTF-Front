@@ -13,7 +13,7 @@ export class GastoComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'descripcion', 'monto', 'fecha'];
   dataSource :MatTableDataSource<Gasto>;
-
+  loading = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private gastoService:GastoService) { }
@@ -23,6 +23,7 @@ export class GastoComponent implements OnInit {
     //this.dataSource.paginator = this.paginator;
     this.gastoService.getGastosByDeuda().subscribe(data=>{
       this.dataSource =new MatTableDataSource<Gasto>(data);
+      this.loading = true;
     })
 
   }

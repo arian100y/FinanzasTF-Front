@@ -26,6 +26,7 @@ export class RegistrarClienteTasaComponent implements OnInit {
     tipo:null,
     periodo : null
   }
+  loading = false;
   constructor(private clienteService:ClienteService,private router:Router) {this.resetErrors() }
   foods: Tasas[] = [
     {value: 0, viewValue: 'Tasa Simple'},
@@ -78,9 +79,18 @@ export class RegistrarClienteTasaComponent implements OnInit {
     return errors;
   }
 
+  isNumberKey(evt){
+    console.log(evt.keyCode);
+    let charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode != 46 && charCode > 31 
+      && (charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
+ }
   registerCliente(){
     //let client = this.regClienteComponent.cliente;
-    
+    this.loading= true;
     let errs = this.checkForm();
     if(Object.keys(errs).length === 0){
 
@@ -93,7 +103,7 @@ export class RegistrarClienteTasaComponent implements OnInit {
     })
 
     }else{
-console.log("fdas")
+      this.loading = false;
       Object.keys(errs).forEach(key=>{
         this.errores[key] = errs[key];
       })

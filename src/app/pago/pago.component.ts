@@ -19,12 +19,14 @@ export class PagoComponent implements OnInit {
   dateString:String;
   info : string;
   cliente:Cliente;
+  loading = false;
   constructor(private router:Router,private datePipe:DatePipe,private cookies:CookieService,private gastoService:GastoService) { }
 
   ngOnInit(): void {
     this.date = new Date();
     this.dateString = this.datePipe.transform(this.date, 'yyyy-MM-dd');
     this.cliente = JSON.parse(this.cookies.get('cliente'));
+    //HACER DINAMICO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     this.dataSource = this.cliente.deudas;
     this.displayedColumns = ['id', 'fecha', 'valor'];
     

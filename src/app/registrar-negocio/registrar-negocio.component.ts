@@ -11,6 +11,7 @@ import { AppComponent } from '../app.component';
 })
 export class RegistrarNegocioComponent implements OnInit {
 
+  loading = false;
   errores = {
     nombre:["",false],
     aMaterno:null,
@@ -34,7 +35,16 @@ export class RegistrarNegocioComponent implements OnInit {
     this.negocio = new Negocio();
     this.resetErrors(); 
    }
+    
+    isNumberKey(evt){
+      console.log(evt.keyCode);
+      let charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode != 46 && charCode > 31 
+        && (charCode < 48 || charCode > 57))
+          return false;
 
+      return true;
+   }
   ngOnInit(): void {
     
     
@@ -93,19 +103,22 @@ export class RegistrarNegocioComponent implements OnInit {
   }
 
   registerNegocio(){
-    
+    this.loading = true;
     let errs = this.checkForm()
-
+    
     if(Object.keys(errs).length === 0){
       this.negocioService.postNegocio(this.negocio).subscribe(data=>{
       
       
       this.router.navigate(['negocio-login']);
+    }, (err)=>{
+      this.loading = false;
     });
 
     }else{
       Object.keys(errs).forEach(key=>{
         this.errores[key] = errs[key];
+        this.loading = false;
       })
     }
     

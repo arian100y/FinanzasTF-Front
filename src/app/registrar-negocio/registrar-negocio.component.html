@@ -1,7 +1,7 @@
 
 <h3 class = "title">Bienvenido</h3>
 <div class="redBar"></div>
-<h4 class = "title">Registrar Negocio</h4>
+<p class = "title2" >Registrar Negocio</p>
 <form  method="post">
    
   
@@ -34,7 +34,12 @@
               <div>
                  <label for="dni" style="color: rgb(50, 50, 50)"><b>DNI</b></label>
              
-             <input type="number" placeholder="Enter DNI" name="dni" required [(ngModel)]="negocio.perfil.dni">
+             <input maxlength="8"
+             (keypress)="isNumberKey($event)"
+             oninput="javascript: if (this.value.length > this.maxLength) 
+        this.value = this.value.slice(0, this.maxLength)"  
+             type="number" placeholder="Enter DNI" name="dni"
+              required [(ngModel)]="negocio.perfil.dni">
              <p [hidden]= "!errores.dni[1]" style = "color: red;">{{errores.dni[0]}}</p>
     
             </div>
@@ -42,7 +47,9 @@
              <div>
                  <label for="ruc" style="color: rgb(50, 50, 50)"><b>Razon Social</b></label>
              
-             <input type="number" placeholder="Enter RUC" name="ruc" required [(ngModel)]="negocio.ruc">
+             <input
+             (keypress)="isNumberKey($event)"
+              type="number" placeholder="Enter RUC" name="ruc" required [(ngModel)]="negocio.ruc">
              <p [hidden]= "!errores.ruc[1]" style = "color: red;">{{errores.ruc[0]}}</p>
     
             </div>
@@ -68,9 +75,11 @@
          <div>
             <label for="telefono" style="color: rgb(50, 50, 50)"><b>Telefono</b></label>
          
-        <input maxlength = "9"
+        <input maxlength="9"
+        (keypress)="isNumberKey($event)"
         oninput="javascript: if (this.value.length > this.maxLength) 
-        this.value = this.value.slice(0, this.maxLength)"  type="number" placeholder="Enter Telefono" name="telefono" required [(ngModel)]="negocio.perfil.telefono">
+   this.value = this.value.slice(0, this.maxLength)"   
+         type="number" placeholder="Enter Telefono" name="telefono" required [(ngModel)]="negocio.perfil.telefono">
          </div>
          <p [hidden]= "!errores.telefono[1]" style = "color: red;">{{errores.telefono[0]}}</p>
     
@@ -78,11 +87,11 @@
            <label for="password" style="color: rgb(50, 50, 50)"><b>Password</b></label>
         
          <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="negocio.password">
-         <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.direccion[0]}}</p>
+         <p [hidden]= "!errores.direccion[1]" style = "color: red;">{{errores.password[0]}}</p>
     
          </div>
-        <div style="margin-top: 15px;margin-bottom: 15px; margin-left: 5%;">
-            <p style="color: red;">A continuacion creara un codigo con el cual los clientes podran unirse directamente
+        <div style="margin-top: 15px;margin-bottom: 15px; margin-right:5%;">
+            <p style="font-family: 'Calibri';color: red; font-size: 20px;">A continuacion creara un codigo con el cual los clientes podran unirse directamente
                 a su negocio.
             </p>
         </div>
@@ -97,7 +106,10 @@
 
 
         <div>
-            <button style="margin-top: 40px; margin-left: 200px;" type="submit" (click)="registerNegocio()">Registrar</button>
+            <button style="margin-top: 40px; margin-left: 40%;"
+             type="submit" (click)="registerNegocio()">
+             <p style="margin-left: -5px;" [hidden] = "loading">Registrar</p>
+             <div [hidden] = "!loading" class="loader"></div></button>
         </div>
     
     </div>

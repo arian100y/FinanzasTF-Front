@@ -37,8 +37,9 @@ export class RegistrarClienteComponent implements OnInit {
     {value: 'soles', viewValue: 'Soles'},
     {value: 'dolares', viewValue: 'Dolar'}
   ];
+  todayDate:Date = new Date();
   deuda:Deuda;
-
+  loading = false;
   public cliente:Cliente;
 
   constructor(private router:Router, 
@@ -72,10 +73,13 @@ export class RegistrarClienteComponent implements OnInit {
   addEvent(event: MatDatepickerInputEvent<Date>){
     this.cliente.fechaEmision = event.value.toISOString();
     let deudaDate = event.value;
+  
+    let date = new Date(deudaDate);
     
-    deudaDate.setMonth(deudaDate.getMonth()+1);
-    this.deuda.fecha =deudaDate.toISOString();
-   
+    
+    date.setMonth(deudaDate.getMonth()+1);
+    this.deuda.fecha =date.toISOString();
+    
     
   }
   checkForm():{}{
@@ -110,7 +114,7 @@ export class RegistrarClienteComponent implements OnInit {
     if(this.cliente.moneda == "") {
       errors["moneda"] = ["Moneda no puede estar vacio.", true]
     }
-    console.log(this.cliente.credito);
+    
     if( this.cliente.credito === "" || this.cliente.credito === null){
       errors["credito"] = ["Credito no puede estar vacio.", true]
     } else
@@ -125,14 +129,25 @@ export class RegistrarClienteComponent implements OnInit {
     
     return errors;
   }
+  
+  isNumberKey(evt){
+   
+    let charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode != 46 && charCode > 31 
+      && (charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
+ }
   goToTasa(){
+    this.loading = true;
     this.resetErrors();
     let errs = this.checkForm()
     if(Object.keys(errs).length === 0){
  this.cliente.negocio_id = this.appComponent.info.id;
     this.cliente.deudas.push(this.deuda);
 
-    console.log(this.cliente);
+    
     this.clienteService.saveCliente(this.cliente);
     
       
@@ -143,6 +158,7 @@ export class RegistrarClienteComponent implements OnInit {
       Object.keys(errs).forEach(key=>{
         this.errores[key] = errs[key];
       })
+      this.loading = false;
     }
    
   

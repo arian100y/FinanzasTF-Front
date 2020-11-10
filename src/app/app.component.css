@@ -3,11 +3,12 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: red;
+  
 }
 nav {
   width: 100%;
-
+  background-color: rgb(196, 0, 0);
+  height: 50px;
   top: 0;
   z-index: 9;
 }
@@ -17,25 +18,31 @@ li {
 
 li a {
   display: block;
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
-  padding: 10px 16px;
+  padding: 15px 16px;
   text-decoration: none;
   text-shadow: 1px 1px 4px black;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: rgb(100, 100, 100);
+  background-color: rgb(255, 57, 57);
   color: white;
+  transition: all 0.2s;
 }
 
 .test {
   float: right;
-  background-color: darkslategrey;
+  background-color: rgb(54, 54, 54);
+  cursor: pointer;
+
+}
+.test :hover {
+  float: right;
+  background-color: rgb(95, 95, 95);
   cursor: pointer;
 }
-
 .footer {
   position: fixed;
   left: 0;

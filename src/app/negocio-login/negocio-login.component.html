@@ -1,5 +1,5 @@
-<h1 class = "title">Iniciar Sesion para Negocios</h1>
-<form action="action_page.php" method="post">
+<h1 class = "title">Iniciar Sesion Para Negocios</h1>
+<form >
    
   
     <div class="container">
@@ -7,7 +7,8 @@
            <label for="ruc"  style="color: rgb(50, 50, 50)"><b>RUC</b></label>
         </div>
         <div  >
-       <input  type="number" placeholder="Enter RUC" name="ruc" required  [(ngModel)]="ruc">
+       <input (keypress)="isNumberKey($event)"
+        type="number" placeholder="Enter RUC" name="ruc" required  [(ngModel)]="ruc">
         </div>
 
         <div>
@@ -17,15 +18,18 @@
          <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="password">
         </div>
         <div [hidden]="valid">
-         <p style="color: red;">{{error}}</p>
+         <p style="color: red; font-size: 20px;">{{error}}</p>
        </div>
         <div>
-            <button (click)="validateLogin()" type="submit">Ingresar</button>
+            <button (click)="validateLogin()" type="submit">
+               <p [hidden] = "loading">Ingresar</p>
+               <div [hidden] = "!loading" class="loader"></div>
+            </button>
         </div>
       
         <div>
            <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
+        <input type="checkbox" checked="checked" name="remember"> Recuerdame
       </label>
  
         </div>

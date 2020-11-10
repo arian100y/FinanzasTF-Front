@@ -1,10 +1,7 @@
 <nav >
  <ul >
-  <li><a routerLink="/">Home</a></li>
-    <li [hidden] = "loggedInCliente ||loggedInNegocio"><a routerLink="/cliente-login">Cliente Login</a></li>
-  <li  [hidden] = "loggedInCliente ||loggedInNegocio"><a routerLink="/negocio-login">Negocio Login</a></li>
-  <li  [hidden] = "loggedInCliente ||loggedInNegocio"><a routerLink="/registrar-negocio">Registrar Negocio</a></li>
-
+  <li [hidden] = "loggedInCliente || loggedInNegocio"><a routerLink="/">Home</a></li>
+    
   <li [hidden] = "!loggedInNegocio"><a routerLink="/clientes">Clientes</a></li>
   <li [hidden] = "!loggedInNegocio"><a routerLink="/cuentas">Cuentas</a></li>
   <li [hidden] = "!loggedInNegocio"><a routerLink="/pagos-negocio">Pagos</a></li>

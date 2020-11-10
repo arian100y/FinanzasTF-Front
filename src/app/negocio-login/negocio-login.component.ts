@@ -17,7 +17,8 @@ export class NegocioLoginComponent implements OnInit {
   ruc : number;
   password:string;
   negocio:Negocio;
-
+  loading = false;
+  
   constructor(private cookie:CookieService,private appComponent:AppComponent, private router:Router,private negocioService:NegocioService) { }
 
   ngOnInit(): void {
@@ -25,12 +26,21 @@ export class NegocioLoginComponent implements OnInit {
     this.ruc = null, this.password = "";
   }
 
+  isNumberKey(evt){
+    console.log(evt.keyCode);
+    let charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode != 46 && charCode > 31 
+      && (charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
+ }
 
   validateLogin(){
     let negocio = new Negocio();
     negocio.ruc=this.ruc;
     negocio.password = this.password;
-      
+    this.loading = true;
     if(this.ruc != null && this.password != ""){
       this.negocioService.verifyLogin(negocio).subscribe(data=>{
         
@@ -45,6 +55,7 @@ export class NegocioLoginComponent implements OnInit {
         
       this.router.navigate(['clientes']);
       } ,error =>{this.error = error.error;
+        this.loading=false;
       this.valid = false; })
       
     }
