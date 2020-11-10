@@ -34,7 +34,7 @@
     font-size: 20px;
   }
   .redBar {
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid rgb(40, 108, 139);
     margin-left: 5%;
     margin-right: 5%;
   }

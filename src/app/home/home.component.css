@@ -6,16 +6,24 @@
   
   margin-top: 5%;
 }
+h1{
+  font-size: 60px;
+  margin-top: 3%;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color : rgb(40, 108, 139);
+  letter-spacing: 2px;
+}
 .container2 #child3 ,.container2 .child2{
-  box-shadow: 2px 2px 2px black;
-  border-radius: 25px;
-  background-color:  rgba(1, 16, 31, 0.8)
+  box-shadow: 0px 3px 10px black;
+  border-radius: 50px;
+  background-color:  rgba(243, 243, 243, 0.8)
 }
 
 .child1 {
 
   width: 100%;
-  height: 100%;
+  height: 90%;
   margin-right: 2%;
   text-align: center;
   fill-opacity: unset;
@@ -23,15 +31,15 @@
   color:white
 }
 .child2 {
-  background-color: lightslategrey  ;
+  
   width: 50%;
   text-align: center;
-  height: 100%;
+  height: 90%;
 }
 .child3 {
-  background-color: lightslategrey;
+  
   width: 50%;
-  height: 100%;
+  height: 90%;
   margin-right: 2%;
   text-align: center;
   
@@ -45,9 +53,9 @@
      -moz-appearance: none;
           appearance: none;
   background-color: transparent;
-  border: 2px solid #e91f09;
+  border: 2px solid rgb(40, 108, 139);
   border-radius: 0.6em;
-  color: white;
+  color: black;
 
   -webkit-align-self: center;
       -ms-flex-item-align: center;
@@ -74,5 +82,5 @@
   margin-bottom: 10%;
 }
 .first:hover {
-  box-shadow: 0 0 40px 40px #e74c3c inset;
+  box-shadow: 0 0 40px 40px rgb(40, 108, 139) inset;
 }

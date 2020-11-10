@@ -43,7 +43,7 @@ label{
 
 /* Set a style for all buttons */
 button {
-  background-color: rgb(187, 0, 0);
+  background-color: rgb(40, 108, 139);
   color: white;
   font-size: 20px;
   letter-spacing: 2px;
@@ -61,7 +61,7 @@ button {
 
 /* Add a hover effect for buttons */
 button:hover {
-  background-color: rgb(182, 65, 65);
+  background-color: rgb(51, 138, 179);
 
 }
 

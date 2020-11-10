@@ -11,7 +11,7 @@
   <li [hidden] = "!loggedInCliente"><a routerLink="/perfil">Perfil</a></li>
   <li [hidden] = "!loggedInCliente"><a routerLink="/notificaciones">Notificaciones</a></li>
 
-  <li [hidden] = "!loggedInCliente && !loggedInNegocio" class="test"><a  (click)="signOut()">Salir</a></li>
+  <li [hidden] = "!loggedInCliente && !loggedInNegocio" class="test"><a (click)="signOut()">Salir</a></li>
 </ul> 
 </nav>
 
