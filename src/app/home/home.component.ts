@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appComponent:AppComponent, private router : Router) { }
 
   ngOnInit(): void {
+    if(this.appComponent.loggedInNegocio === true){
+      this.router.navigate(['clientes'])
+    }
+    if(this.appComponent.loggedInCliente === true){
+      this.router.navigate(['pagos-cliente'])
+    }
   }
 
 }

@@ -56,6 +56,10 @@ export class ClienteLoginComponent implements OnInit {
       this.valid = false;})
       
     
+    }else{
+      this. error = "Por favor ponga sus datos.";
+      this.loading = false;
+      this.valid = false;
     }
     
   }

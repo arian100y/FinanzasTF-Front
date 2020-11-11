@@ -2,9 +2,20 @@ table {
   width: 100%;
 }
 .example-button-row {
-  background-color: blue;
+  
   position: relative;
   top: 10px;
+}
+.title {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 20px;
+}
+.redBar {
+  border-bottom: 2px solid rgb(40, 108, 139);
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .example-button-row button {
   float: right;
