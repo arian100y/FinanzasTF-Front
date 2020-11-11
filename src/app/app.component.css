@@ -45,13 +45,4 @@ li a:hover {
   background-color: rgb(95, 95, 95);
   cursor: pointer;
 }
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 
-  background-color: darkslategrey;
-  color: white;
-  text-align: center;
-}

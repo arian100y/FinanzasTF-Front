@@ -1,5 +1,10 @@
 export class Gasto{
-    id:number;
+    id:number;constructor(){
+        this.descripcion = "";
+        this.envioMonto = null;
+        this.fecha = "";
+        this.monto = null;
+    }
     descripcion: string;
     deuda_id: number;
     envioMonto: number;

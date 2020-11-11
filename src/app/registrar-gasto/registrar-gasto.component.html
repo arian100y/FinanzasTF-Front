@@ -8,40 +8,43 @@
         <label for="descripcion" style="color: rgb(50, 50, 50)"><b>Descripcion</b></label>
     
     <input type="text" placeholder="Enter Descripcion" name="descripcion" required [(ngModel)]= "gasto.descripcion">
-     </div>
+    <p [hidden]= "!errores.descripcion[1]" style = "color: red;">{{errores.descripcion[0]}}</p>  
+  </div>
 
      <div>
         <label for="monto" style="color: rgb(50, 50, 50)"><b>Monto</b></label>
     
     <input (keypress)="isNumberKey($event)" type="number" placeholder="Enter Monto" name="monto" required  [(ngModel)]= "gasto.monto">
-     </div>
+    <p [hidden]= "!errores.monto[1]" style = "color: red;">{{errores.monto[0]}}</p>    
+  </div>
      
-     <div>
+     <div>    
         <label for="cargo" style="color: rgb(50, 50, 50)"><b>Cargo de Envio</b></label>
     
     <input (keypress)="isNumberKey($event)" type="number" placeholder="Enter Cargo de Envio" name="cargo" required  [(ngModel)]= "gasto.envioMonto">
-     </div>
+    <p [hidden]= "!errores.envioMonto[1]" style = "color: red;">{{errores.envioMonto[0]}}</p>   
+  </div>
 
      <div>
       <label for="fecha" style="color: rgb(50, 50, 50)"><b>Fecha de Emision</b></label>
    
       <mat-form-field appearance="fill">
        <mat-label>Choose a date</mat-label>
-       <input matInput [matDatepicker]="picker" (dateInput)="addEvent( $event)" (dateChange)="addEvent( $event)">
+       <input [min]="todayDate" matInput [matDatepicker]="picker" (dateInput)="addEvent( $event)" (dateChange)="addEvent( $event)">
        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
        <mat-datepicker #picker></mat-datepicker>
      </mat-form-field>
-
+     <p [hidden]= "!errores.fecha[1]" style = "color: red;">{{errores.fecha[0]}}</p>  
+     
    </div>
    
-      <div [hidden]="valid">
-        <p style="color: red;">{{error}}</p>
-      </div>
-       
-       <div>
-        <button type="submit" (click)="registrarGasto()">Registrar Gasto</button>
-    </div>
       
+   <div>
+    <button style="margin-top: 40px; margin-left: 40%;"
+     type="submit" (click)="registrarGasto()">
+     <p style="margin-left: -5px;" [hidden] = "loading">Registrar Gasto!</p>
+     <div [hidden] = "!loading" class="loader"></div></button>
+</div>
 </div>
 <div class="child2">
   

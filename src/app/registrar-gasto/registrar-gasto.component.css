@@ -36,6 +36,16 @@ input:focus{
   border: 2px solid black;
 
 }
+input:focus{
+  border: 2px solid black;
+
+}
+input::placeholder{
+  transition: all 0.3s;
+}
+input:hover::placeholder{
+  font-size: 17px;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -148,4 +158,20 @@ mat-form-field {
 
 table {
   width: 100%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+mat-form-field {
+  width: 40%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 25px;
+  margin-left: 45%;
+
 }
