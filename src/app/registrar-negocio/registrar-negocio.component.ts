@@ -37,7 +37,7 @@ export class RegistrarNegocioComponent implements OnInit {
    }
     
     isNumberKey(evt){
-      console.log(evt.keyCode);
+      
       let charCode = (evt.which) ? evt.which : evt.keyCode;
       if (charCode != 46 && charCode > 31 
         && (charCode < 48 || charCode > 57))
@@ -101,18 +101,27 @@ export class RegistrarNegocioComponent implements OnInit {
     
     return errors;
   }
-
+error ="";
   registerNegocio(){
     this.loading = true;
+    this.resetErrors();
     let errs = this.checkForm()
-    
+    console.log(this.negocio.ruc)
     if(Object.keys(errs).length === 0){
+      
       this.negocioService.postNegocio(this.negocio).subscribe(data=>{
       
       
       this.router.navigate(['negocio-login']);
     }, (err)=>{
+      console.log(err.error);
+      if(err.error == "El RUC ya esta registrado."){
+        this.errores['ruc'] = [err.error,true];
+      }else{
+        this.errores['codigo'] = [err.error,true];
+      }
       this.loading = false;
+      
     });
 
     }else{

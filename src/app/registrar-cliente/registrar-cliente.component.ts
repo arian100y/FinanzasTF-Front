@@ -143,15 +143,24 @@ export class RegistrarClienteComponent implements OnInit {
     this.loading = true;
     this.resetErrors();
     let errs = this.checkForm()
+    this.cliente.negocio_id = this.appComponent.info.id;
+    
+    
     if(Object.keys(errs).length === 0){
- this.cliente.negocio_id = this.appComponent.info.id;
-    this.cliente.deudas.push(this.deuda);
+      this.clienteService.verify(this.cliente).subscribe(data=>{
 
-    
-    this.clienteService.saveCliente(this.cliente);
-    
+        
+  
+        this.cliente.deudas.push(this.deuda);
+        this.clienteService.saveCliente(this.cliente);
       
-    this.router.navigate(['registrar-cliente-tasa']);
+        
+        this.router.navigate(['registrar-cliente-tasa']);
+      },(err)=>{
+        this.loading=false;
+        this.errores['dni'] = [err.error,true];
+      })
+     
 
     }else{
       
