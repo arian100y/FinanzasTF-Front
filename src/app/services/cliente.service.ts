@@ -18,6 +18,10 @@ export class ClienteService {
     return this.http.post<any>(`${this.url}/login`,nego);
 
     }
+    verify(client:Cliente):Observable<any>{
+      return this.http.post<any>(`${this.url}/verify`,client);
+  
+      }
 
   registrar(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(this.url,cliente);
