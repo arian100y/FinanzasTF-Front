@@ -9,7 +9,8 @@ import { Gasto } from '../models/Gasto';
 export class GastoService {
 
   id:number;
-  private url: string = "https://finanzas-tp.herokuapp.com/gastos"
+  //private url: string = "https://finanzas-tp.herokuapp.com/gastos"
+  private url: string = "http://localhost:8080/gastos"
   constructor(private http:HttpClient) {
 
    }
@@ -20,6 +21,11 @@ export class GastoService {
    getGastosByDeuda():Observable<any>{
     return this.http.get<Gasto>( `${this.url}/${this.id}`);
    }
+
+   getAllGastosByUserId(perfil_id:Number):Observable<Gasto[]>{
+    return this.http.get<Gasto[]>(`${this.url}/${perfil_id}`);
+  }
+
    postGasto(gasto:Gasto):Observable<any>{
      return this.http.post<Gasto>(this.url,gasto);
    }

@@ -31,7 +31,7 @@ export class RegistrarClienteTasaComponent implements OnInit {
   foods: Tasas[] = [
     {value: 0, viewValue: 'Tasa Simple'},
     {value: 1, viewValue: 'Tasa Nominal'},
-    {value: 1, viewValue: 'Tasa Efectiva'}
+    {value: 2, viewValue: 'Tasa Efectiva'}
   ];
   foods2: Tiempos[] = [
     {value: 0, viewValue: 'Diaria'},

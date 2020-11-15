@@ -7,11 +7,9 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NegocioService {
-  private url: string = "https://finanzas-tp.herokuapp.com/negocios"
+  //private url: string = "https://finanzas-tp.herokuapp.com/negocios"
+  private url: string = "http://localhost:8080/negocios"
   constructor(private http: HttpClient) { }
-
-  
-
 
   getNegocios():Observable<Negocio[]>{
     
@@ -28,5 +26,11 @@ export class NegocioService {
 
   }
 
-  
+  getNegocioByRUC(ruc:Number):Observable<Negocio>{
+    return this.http.get<Negocio>(`${this.url}/RUC=${ruc}`);
+  }
+
+  getNegociobyPerfil_id(perfil_id:Number):Observable<Negocio>{
+    return this.http.get<Negocio>(`${this.url}/perfil_id=${perfil_id}`);
+  }
 }
