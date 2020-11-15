@@ -52,6 +52,8 @@ export class ClienteLoginComponent implements OnInit {
 
           this.clienteService.getClienteByDNI(this.clienteDNI).subscribe(data =>{
             this.appComponent.info = data.perfil;
+            console.log("this.appComponent.info")
+            console.log(this.appComponent.info)
         })
 
           this.cookie.set("cliente",JSON.stringify(data) );

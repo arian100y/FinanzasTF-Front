@@ -9,8 +9,8 @@ import { Gasto } from '../models/Gasto';
 export class GastoService {
 
   id:number;
-  //private url: string = "https://finanzas-tp.herokuapp.com/gastos"
-  private url: string = "http://localhost:8080/gastos"
+  private url: string = "https://finanzas-tp.herokuapp.com/gastos"
+  //private url: string = "http://localhost:8080/gastos"
   constructor(private http:HttpClient) {
 
    }
