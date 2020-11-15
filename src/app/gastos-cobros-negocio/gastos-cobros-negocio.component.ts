@@ -10,6 +10,8 @@ export interface PeriodicElement {
   symbol: string;
 }
 
+
+
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
@@ -34,8 +36,14 @@ export class GastosCobrosNegocioComponent implements OnInit {
   date:Date;
   dateString:String;
   info : string;
-  private cliente = new Cliente();
+  cliente : Cliente;
   private gastos = [];
+  loading = false;
+  tipoTasa = ['Tasa simple', 'Tasa nominal', 'Tasa efectiva']
+  tipoTasaAbreviacion = ['S', 'N', 'E']
+  tipoPeriodo = ['D', 'M', 'B', 'A']
+
+
   constructor(private datePipe:DatePipe, private router:Router, private clienteService:ClienteService) { }
 
   ngOnInit(): void {
@@ -50,7 +58,6 @@ export class GastosCobrosNegocioComponent implements OnInit {
       this.gastos= this.cliente.deudas[this.cliente.deudas.length-1].gastos;
       this.displayedColumns = ['id', 'fecha', 'valor'];
       });
-
   }
 
 
