@@ -27,7 +27,7 @@ export class NegocioLoginComponent implements OnInit {
   }
 
   isNumberKey(evt){
-    console.log(evt.keyCode);
+    
     let charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode != 46 && charCode > 31 
       && (charCode < 48 || charCode > 57))
@@ -47,7 +47,7 @@ export class NegocioLoginComponent implements OnInit {
         this.appComponent.loggedInNegocio = true;
         this.appComponent.info = new Perfil();
         this.negocioService.getNegocioByRUC(this.ruc).subscribe(data =>{
-          this.appComponent.info = data.perfil
+          this.appComponent.info = data;
           this.cookie.set("negocio",JSON.stringify(data) );
           this.cookie.set("loggedInNegocio","yes");
         

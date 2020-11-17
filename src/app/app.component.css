@@ -11,6 +11,7 @@ nav {
   height: 50px;
   top: 0;
   z-index: 9;
+  box-shadow: 0px 2px 4px #888888;
 }
 li {
   float: left;
@@ -22,7 +23,7 @@ li a {
   text-align: center;
   padding: 15px 16px;
   text-decoration: none;
-  text-shadow: 1px 1px 4px black;
+  
 }
 .bye{
   border-radius: 25px;

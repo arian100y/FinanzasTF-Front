@@ -3,50 +3,139 @@
 /* Set a style for all buttons */
 
 .child1 {
-    border-right: 1px solid black;
-  
-    float: left;
-    margin-left: 5%;
-    height: 100%;
-    width: 45%;
-  
-    padding: 16px;
+  border-right: 1px solid black;
+
+  float: left;
+  margin-left: 5%;
+  height: 100%;
+  width: 45%;
+
+  padding: 16px;
+}
+.child2 {
+  float: left;
+
+  height: 100%;
+  width: 45%;
+
+  padding: 16px;
+}
+.child2 label {
+}
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+.registrarGasto {
+  float: right;
+  margin-bottom: 3%;
+  outline: none;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 10px;
+  border-radius: 25px;
+}
+
+.pagado {
+  float: left;
+  margin-bottom: 3%;
+  outline: none;
+  background-color: gray;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 10px;
+  border-radius: 25px;
+}
+.title {
+  margin-left: 5%;
+  margin-top: 2vh;
+  color: rgb(50, 50, 50);
+  font-size: 20px;
+}
+.redBar {
+  border-bottom: 2px solid rgb(40, 108, 139);
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  margin-right: 50%;
+  float: right;
+  padding-top: 16px;
+}
+
+table {
+  width: 100%;
+}
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  border-radius: 15px;
+  bottom: 30px;
+}
+
+#snackbar.show {
+  visibility: visible;
+
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
   }
-  .child2 {
-    float: left;
-  
-    height: 100%;
-    width: 45%;
-  
-    padding: 16px;
+  to {
+    bottom: 30px;
+    opacity: 1;
   }
-  .child2 label {
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
   }
-  /* Add a hover effect for buttons */
-  button:hover {
-    opacity: 0.8;
+  to {
+    bottom: 30px;
+    opacity: 1;
   }
-  
-  .title {
-    margin-left: 5%;
-    margin-top: 2vh;
-    color: rgb(50, 50, 50);
-    font-size: 20px;
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
   }
-  .redBar {
-    border-bottom: 2px solid rgb(40, 108, 139);
-    margin-left: 5%;
-    margin-right: 5%;
+  to {
+    bottom: 0;
+    opacity: 0;
   }
-  
-  /* The "Forgot password" text */
-  span.psw {
-    margin-right: 50%;
-    float: right;
-    padding-top: 16px;
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
   }
-  
-  table {
-    width: 100%;
+  to {
+    bottom: 0;
+    opacity: 0;
   }
-  
+}

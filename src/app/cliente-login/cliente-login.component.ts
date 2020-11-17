@@ -26,7 +26,7 @@ export class ClienteLoginComponent implements OnInit {
     this.codigoNegocio = "";
   }
   isNumberKey(evt){
-    console.log(evt.keyCode);
+    
     let charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode != 46 && charCode > 31 
       && (charCode < 48 || charCode > 57))
@@ -51,17 +51,19 @@ export class ClienteLoginComponent implements OnInit {
           this.appComponent.info = new Cliente();
 
           this.clienteService.getClienteByDNI(this.clienteDNI).subscribe(data =>{
-            this.appComponent.info = data.perfil;
-            console.log("this.appComponent.info")
-            console.log(this.appComponent.info)
+            this.appComponent.info = data;
+            
+            
+            this.cookie.set("cliente",JSON.stringify(data) );
+            this.cookie.set("loggedInCliente","yes");
+            
+            this.router.navigate(['pagos-cliente']);
         })
 
-          this.cookie.set("cliente",JSON.stringify(data) );
-          this.cookie.set("loggedInCliente","yes");
+      
           
-          this.router.navigate(['pagos-cliente']);
-          
-      } ,error =>{this. error = error.error; 
+      } ,
+      (error) =>{this. error = error.error; 
       this.loading = false;
       this.valid = false;})
       

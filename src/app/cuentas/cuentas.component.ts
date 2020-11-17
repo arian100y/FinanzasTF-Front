@@ -6,34 +6,44 @@ import { NegocioService } from '../services/negocio.service';
 import { ClienteService } from '../services/cliente.service';
 import { AppComponent } from '../app.component';
 
-
 @Component({
   selector: 'app-cuentas',
   templateUrl: './cuentas.component.html',
-  styleUrls: ['./cuentas.component.css']
+  styleUrls: ['./cuentas.component.css'],
 })
 export class CuentasComponent implements OnInit {
-  displayedColumns: string[] ;
+  displayedColumns: string[];
   dataSource = [];
   loading = false;
-  public clientes =[];
- 
-  constructor(private negocioService: NegocioService,private clienteService: ClienteService,private router:Router,private appComponent:AppComponent) { }
+  public clientes = [];
+
+  constructor(
+    private negocioService: NegocioService,
+    private clienteService: ClienteService,
+    private router: Router,
+    private appComponent: AppComponent
+  ) {}
 
   ngOnInit(): void {
-
-    this.negocioService.getNegociobyPerfil_id(this.appComponent.info.id).subscribe(data=>{
-      this.clientes = data.clientes;
-      this.dataSource = data.clientes;
-      this.loading = true;
-      this.displayedColumns = ['id', 'perfil.nombre', 'tasa', 'deudaMonto','actions'];
-    })
+    this.negocioService
+      .getNegociobyPerfil_id(this.appComponent.info.id)
+      .subscribe((data) => {
+        this.clientes = data.clientes;
+        this.dataSource = data.clientes;
+        this.loading = true;
+        this.displayedColumns = [
+          'id',
+          'perfil.nombre',
+          'tasa',
+          'deudaMonto',
+          'actions',
+        ];
+      });
   }
 
-  goToGastos(row){    
-    
+  goToDeudas(row) {
     this.clienteService.saveCliente(row);
-    this.router.navigate(['gastos-cobros-negocio']);
+    this.router.navigate(['deudas']);
+    //this.router.navigate(['gastos-cobros-negocio']);
   }
-
 }

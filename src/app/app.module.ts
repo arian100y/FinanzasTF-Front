@@ -33,6 +33,7 @@ import { GastosCobrosNegocioComponent } from './gastos-cobros-negocio/gastos-cob
 import { RegistrarGastoComponent } from './registrar-gasto/registrar-gasto.component';
 import { NotificacionesComponent } from './notificaciones-negocio/notificaciones-negocio.component';
 import { MatCardModule } from '@angular/material/card';
+import { DeudasComponent } from './deudas/deudas.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MatCardModule } from '@angular/material/card';
     PagosNegocioComponent,
     GastosCobrosNegocioComponent,
     RegistrarGastoComponent,
-    NotificacionesComponent
+    NotificacionesComponent,
+    DeudasComponent
   ],
   imports: [
     BrowserModule,

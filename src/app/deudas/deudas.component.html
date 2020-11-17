@@ -1,4 +1,4 @@
-<h4 class="title">Cuentas</h4>
+<h4 class="title">Deudas</h4>
 <div class="redBar"></div>
 <h4 class="title"></h4>
 
@@ -19,30 +19,36 @@
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="perfil.nombre">
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.perfil.nombre }}</td>
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef>Monto</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.monto }}</td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="tasa">
-      <th mat-header-cell *matHeaderCellDef>Tasa de Interes</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.tasa.monto }}</td>
+    <ng-container matColumnDef="interes">
+      <th mat-header-cell *matHeaderCellDef>Interes</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.interes }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="deudaMonto">
-      <th mat-header-cell *matHeaderCellDef>Monto</th>
+    <ng-container matColumnDef="pagado">
+      <th mat-header-cell *matHeaderCellDef>Pagado</th>
       <td mat-cell *matCellDef="let cliente">
-        {{ cliente.deudas[cliente.deudas.length - 1].monto }}
+        {{ cliente.pagado }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let cliente">
+        {{ cliente.fecha }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let row">
-        <button id="but" (click)="goToDeudas(row)" mat-raised-button>
-          Ver Deudas
+        <button id="but" (click)="goToGastos(row)" mat-raised-button>
+          Ver Gastos
         </button>
       </td>
     </ng-container>

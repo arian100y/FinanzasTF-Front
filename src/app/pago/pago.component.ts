@@ -6,6 +6,7 @@ import { GastoService } from '../services/gasto.service';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { ClienteService } from '../services/cliente.service';
+import { DeudaService } from '../services/deuda.service';
 
 @Component({
   selector: 'app-pago',
@@ -28,23 +29,29 @@ export class PagoComponent implements OnInit {
   tipoPeriodo = ['D', 'M', 'B', 'A']
 
   constructor(private router: Router, private datePipe: DatePipe, private cookies: CookieService, 
-    private gastoService: GastoService, private clienteService: ClienteService, private appComponent: AppComponent) { }
+    private deudaService: DeudaService, private clienteService: ClienteService, private appComponent: AppComponent) { }
 
   ngOnInit(): void {
     this.date = new Date();
     this.dateString = this.datePipe.transform(this.date, 'yyyy-MM-dd');
+    this.cliente=this.appComponent.info;
+
     this.clienteService.getClientebyPerfil_id(this.appComponent.info.perfil.id).subscribe(data => {
+      console.log("why two",data.deudas[0].gastos);
       this.cliente = data;
       this.dataSource = this.cliente.deudas;
       this.displayedColumns = ['id', 'fecha', 'valor'];
+      
     })
-    //HACER DINAMICO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   
     
 
   }
 
   goToGastos(element) {
-    this.gastoService.saveGasto(element.id);
+    console.log("el",element)
+    this.deudaService.saveDeuda(element);
+    this.cookies.set("lastGastos",JSON.stringify(element))
     this.router.navigate(['gastos-actuales'])
   }
 }

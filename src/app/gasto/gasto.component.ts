@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Gasto } from '../models/Gasto';
 import { AppComponent } from '../app.component';
 import { GastoService } from '../services/gasto.service';
+import { DeudaService } from '../services/deuda.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-gasto',
@@ -17,16 +19,24 @@ export class GastoComponent implements OnInit {
   loading = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private gastoService:GastoService, private appComponent:AppComponent) { }
+  constructor(private deudaService:DeudaService, private appComponent:AppComponent,private cookie:CookieService) { }
 
   ngOnInit(): void {
     setTimeout(() => this.dataSource.paginator = this.paginator);
-    //this.dataSource.paginator = this.paginator;
-    this.gastoService.getAllGastosByUserId(this.appComponent.info.id).subscribe(data=>{
-      this.dataSource =new MatTableDataSource<Gasto>(data);
-      this.loading = true;
-    })
-
+    //this.dataSource.paginator = this.paginator;\
+    let data ;
+    if(this.cookie.get("lastGastos")){
+    data = JSON.parse(this.cookie.get('lastGastos'));
+    }else{
+      data  = this.deudaService.getDeuda()
+    }
+    
+    console.log(data.gastos)
+    
+   
+    this.dataSource =new MatTableDataSource<Gasto>(data.gastos);
+    this.loading = true;
+    
   }
 
 }

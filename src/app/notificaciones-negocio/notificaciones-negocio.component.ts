@@ -22,6 +22,7 @@ export class NotificacionesComponent implements OnInit {
   ngOnInit(): void {
     
     this.negocio = this.appComponent.info
+    console.log(this.negocio)
     console.log(this.negocio.clientes)
     this.dataSource = this.negocio.clientes
 

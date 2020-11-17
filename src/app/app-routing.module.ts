@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClienteLoginComponent } from './cliente-login/cliente-login.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { CuentasComponent } from './cuentas/cuentas.component';
+import { DeudasComponent } from './deudas/deudas.component';
 import { GastoComponent } from './gasto/gasto.component';
 import { GastosCobrosNegocioComponent } from './gastos-cobros-negocio/gastos-cobros-negocio.component';
 import { HomeComponent } from './home/home.component';
@@ -17,24 +18,27 @@ import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente
 import { RegistrarGastoComponent } from './registrar-gasto/registrar-gasto.component';
 import { RegistrarNegocioComponent } from './registrar-negocio/registrar-negocio.component';
 
-const routes: Routes = [{ path: 'negocio-login', component: NegocioLoginComponent },
-{ path: 'cliente-login', component: ClienteLoginComponent },
-{ path: 'registrar-negocio', component: RegistrarNegocioComponent },
-{ path: 'clientes', component: ClientesComponent },
-{ path: 'registrar-cliente', component: RegistrarClienteComponent },
-{ path: 'registrar-cliente-tasa', component: RegistrarClienteTasaComponent },
-{ path: 'cuentas', component: CuentasComponent },
-{ path: 'pagos-cliente', component: PagoComponent },
-{path:'perfil', component: PerfilComponent},
-{path:'gastos-actuales', component: GastoComponent},
-{path:'', component: HomeComponent},
-{path:'pagos-negocio', component:PagosNegocioComponent},
-{path:'gastos-cobros-negocio',component:GastosCobrosNegocioComponent},
-{path:'notificaciones',component:NotificacionesComponent},
-{path:'registrar-gasto-negocio',component:RegistrarGastoComponent}];
+const routes: Routes = [
+  { path: 'negocio-login', component: NegocioLoginComponent },
+  { path: 'cliente-login', component: ClienteLoginComponent },
+  { path: 'registrar-negocio', component: RegistrarNegocioComponent },
+  { path: 'clientes', component: ClientesComponent },
+  { path: 'registrar-cliente', component: RegistrarClienteComponent },
+  { path: 'registrar-cliente-tasa', component: RegistrarClienteTasaComponent },
+  { path: 'cuentas', component: CuentasComponent },
+  { path: 'pagos-cliente', component: PagoComponent },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'gastos-actuales', component: GastoComponent },
+  { path: '', component: HomeComponent },
+  { path: 'pagos-negocio', component: PagosNegocioComponent },
+  { path: 'gastos-cobros-negocio', component: GastosCobrosNegocioComponent },
+  { path: 'notificaciones', component: NotificacionesComponent },
+  { path: 'registrar-gasto-negocio', component: RegistrarGastoComponent },
+  { path: 'deudas', component: DeudasComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
