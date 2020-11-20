@@ -55,3 +55,23 @@ table {
     transform: rotate(360deg);
   }
 }
+
+.child1 {
+  border-right: 1px solid black;
+
+  float: left;
+  margin-left: 5%;
+  height: 100%;
+  width: 55%;
+
+  padding: 16px;
+}
+
+.child2 {
+  float: left;
+
+  height: 100%;
+  width: 35%;
+
+  padding: 16px;
+}
