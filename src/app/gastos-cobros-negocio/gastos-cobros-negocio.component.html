@@ -7,26 +7,43 @@
     Registrar Gasto
   </button>
   <button class="pagado" (click)="marcarPagado()">Marcar Como Pagado</button>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <table
+    style="margin-top: 15%"
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+  >
     <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let gasto">{{ gasto.id }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="fecha">
-      <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let gasto">{{ gasto.fecha }}</td>
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+      <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="valor">
-      <th mat-header-cell *matHeaderCellDef>Valor</th>
-      <td mat-cell *matCellDef="let gasto">{{ gasto.monto }}</td>
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef>Monto</th>
+      <td mat-cell *matCellDef="let element">{{ element.monto }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let element">{{ element.fecha }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="envioMonto">
+      <th mat-header-cell *matHeaderCellDef>Monto de Envio</th>
+      <td mat-cell *matCellDef="let element">{{ element.envioMonto }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -38,34 +55,47 @@
     <h3 style="float: right; position: relative">{{ dateString }}</h3>
   </div>
 
-  <div>
-    <h1 style="float: left; width: 100%">
-      {{ cliente.perfil.nombre }} {{ cliente.perfil.apellidoP }}
-      {{ cliente.perfil.apellidoM }}
-    </h1>
-  </div>
+  <h1 style="float: left; width: 100%">
+    {{ cliente.perfil.nombre }} {{ cliente.perfil.apellidoP }}
+    {{ cliente.perfil.apellidoM }}
+  </h1>
 
-  <h3 style="float: left; width: 100%">{{ cliente.perfil.direccion }}</h3>
-  <h3 style="float: left; width: 100%">
+  <h3 style="float: left; width: 100%; line-height: 0">
+    {{ cliente.perfil.direccion }}
+  </h3>
+  <h3 style="float: left; width: 100%; line-height: 0; margin-top: 1%">
     Télefono: {{ cliente.perfil.telefono }}
   </h3>
-  <h3 style="float: left; width: 100%">
-    {{ tipoTasa[cliente.tasa.tipo] }} T{{
-      tipoTasaAbreviacion[cliente.tasa.tipo]
-    }}{{ tipoPeriodo[cliente.tasa.periodo] }}: {{ cliente.tasa.monto }}%
+
+  <h3 style="float: left; width: 100%; margin-top: 10%">
+    Se entrega a {{ cliente.perfil.nombre }} {{ cliente.perfil.apellidoP }}
+    {{ cliente.perfil.apellidoM }} identificado/a con DNI
+    {{ cliente.perfil.dni }} que cuenta con domicilio en
+    {{ cliente.perfil.direccion }} por concepto de compras y gastos.
   </h3>
-  <h3 style="float: left; width: 100%">
+
+  <h3
+    style="
+      float: left;
+      width: 100%;
+      margin-left: 8%;
+      margin-top: 8%;
+      line-height: 0;
+    "
+  >
     Línea de Crédito: {{ cliente.credito }}
   </h3>
-  <h3 style="float: left; width: 100%">Estado: FALTA</h3>
+  <h3 style="float: left; width: 100%; margin-left: 8%; margin-bottom: 8%">
+    Estado: FALTA
+  </h3>
 
-  <table style="width: 40%; margin-top: 10%; margin: auto">
+  <table style="width: 40%; margin-top: 20%; margin: auto">
     <tr>
       <th style="width: auto; padding-right: 15px">
         <h3 style="float: left; width: 100%">Monto actual:</h3>
       </th>
       <th style="width: auto; padding-right: 15px">
-        <h3 style="float: left; width: 100%">FALTA</h3>
+        <h3 style="float: left; width: 100%">{{ deuda.monto }}</h3>
       </th>
     </tr>
     <tr>
@@ -73,7 +103,7 @@
         <h3 style="float: left; width: 100%">Interes:</h3>
       </th>
       <th style="width: auto; padding-right: 15px">
-        <h3 style="float: left; width: 100%">FALTA</h3>
+        <h3 style="float: left; width: 100%">{{ deuda.interes }}</h3>
       </th>
     </tr>
     <tr>
@@ -81,7 +111,9 @@
         <h3 style="float: left; width: 100%">Total neto a pagar:</h3>
       </th>
       <th style="width: auto; padding-right: 15px">
-        <h3 style="float: left; width: 100%">FALTA</h3>
+        <h3 style="float: left; width: 100%">
+          {{ deuda.interes + deuda.monto }}
+        </h3>
       </th>
     </tr>
   </table>

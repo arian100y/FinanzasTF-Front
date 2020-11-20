@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { __assign } from 'tslib';
 import { Cliente } from '../models/Cliente';
 import { Deuda } from '../models/Deuda';
 import { ClienteService } from '../services/cliente.service';
@@ -50,6 +51,7 @@ export class GastosCobrosNegocioComponent implements OnInit {
     private deudaService: DeudaService
   ) {}
   deuda: Deuda;
+  deudaReal: Deuda;
   ngOnInit(): void {
     this.date = new Date();
     this.info = 'blach blah  test';
@@ -58,12 +60,20 @@ export class GastosCobrosNegocioComponent implements OnInit {
     this.clienteService.ded.subscribe((data) => {
       this.deuda = data;
 
+      console.log('data', data);
       //deudas.sort((a, b) => a.id - b.id);
 
       //this.gastos = deudas[0].gastos;
-      this.dataSource = this.deuda.gastos;
-      this.displayedColumns = ['id', 'fecha', 'valor'];
+
+      this.displayedColumns = [
+        'id',
+        'descripcion',
+        'monto',
+        'fecha',
+        'envioMonto',
+      ];
     });
+
     this.clienteService.share.subscribe((data) => {
       this.cliente = data;
     });
@@ -71,6 +81,7 @@ export class GastosCobrosNegocioComponent implements OnInit {
 
   marcarPagado() {
     this.deuda.pagado = true;
+    console.log(this.deuda);
     this.deudaService.registrar(this.deuda).subscribe((data) => {
       console.log(data);
       this.myFunction();
@@ -88,6 +99,7 @@ export class GastosCobrosNegocioComponent implements OnInit {
       x.className = x.className.replace('show', '');
     }, 3000);
   }
+
   goToRegistrarGasto() {
     this.router.navigate(['registrar-gasto-negocio']);
   }

@@ -43,12 +43,10 @@ export class RegistrarGastoComponent implements OnInit {
     { value: 'dolares', viewValue: 'Dolar' },
   ];
   ngOnInit(): void {
-    this.clienteService.share.subscribe((data) => {
-      this.cliente = data;
-      let deudas = this.cliente.deudas;
-      deudas.sort((a, b) => a.id - b.id);
+    this.clienteService.ded.subscribe((data) => {
+      this.deuda = data;
 
-      this.gastos = deudas[0].gastos;
+      this.gastos = this.deuda.gastos;
       this.dataSource = this.gastos;
       this.displayedColumns = ['id', 'fecha', 'valor'];
     });
@@ -65,7 +63,6 @@ export class RegistrarGastoComponent implements OnInit {
   }
 
   isNumberKey(evt) {
-    console.log(evt.keyCode);
     let charCode = evt.which ? evt.which : evt.keyCode;
     if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
       return false;
@@ -75,7 +72,7 @@ export class RegistrarGastoComponent implements OnInit {
 
   checkForm(): {} {
     let errors = {};
-    console.log('LMFAO');
+
     if (this.gasto.descripcion === '') {
       errors['descripcion'] = ['Descripcion no puede estar vacio.', true];
     }
@@ -100,15 +97,13 @@ export class RegistrarGastoComponent implements OnInit {
     return errors;
   }
   registrarGasto() {
-    console.log('FSAFS');
     this.loading = true;
     this.resetErrors();
     let errs = this.checkForm();
     if (Object.keys(errs).length === 0) {
       this.gasto.deuda_id = this.deuda.id;
       this.gastoService.postGasto(this.gasto).subscribe((data) => {
-        console.log(data);
-        this.router.navigate(['clientes']);
+        this.router.navigate(['cuentas']);
       });
     } else {
       this.loading = false;

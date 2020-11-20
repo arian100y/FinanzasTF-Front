@@ -1,6 +1,11 @@
 table {
   width: 100%;
 }
+.mat-elevation-z8 {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
 .example-button-row {
   background-color: blue;
   position: relative;
@@ -14,8 +19,8 @@ table {
   color: white;
   transition: all 0.3;
 }
-#but{
-  
+
+#but {
   height: 30px;
   margin-right: 3%;
   background-color: rgb(54, 54, 54);
@@ -23,9 +28,7 @@ table {
   transition: all 0.3;
 }
 #but:hover {
- 
   background-color: rgb(99, 99, 99);
- 
 }
 .title {
   margin-left: 5%;
@@ -46,11 +49,15 @@ table {
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
-  margin:auto;
+  margin: auto;
   margin-top: 10%;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -10,33 +10,39 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-gasto',
   templateUrl: './gasto.component.html',
-  styleUrls: ['./gasto.component.css']
+  styleUrls: ['./gasto.component.css'],
 })
 export class GastoComponent implements OnInit {
-
-  displayedColumns: string[] = ['id', 'descripcion', 'monto', 'fecha'];
-  dataSource :MatTableDataSource<Gasto>;
+  displayedColumns: string[] = [
+    'id',
+    'descripcion',
+    'monto',
+    'fecha',
+    'envioMonto',
+  ];
+  dataSource: MatTableDataSource<Gasto>;
   loading = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private deudaService:DeudaService, private appComponent:AppComponent,private cookie:CookieService) { }
+  constructor(
+    private deudaService: DeudaService,
+    private appComponent: AppComponent,
+    private cookie: CookieService
+  ) {}
 
   ngOnInit(): void {
-    setTimeout(() => this.dataSource.paginator = this.paginator);
     //this.dataSource.paginator = this.paginator;\
-    let data ;
-    if(this.cookie.get("lastGastos")){
-    data = JSON.parse(this.cookie.get('lastGastos'));
-    }else{
-      data  = this.deudaService.getDeuda()
+    let data;
+    if (this.cookie.get('lastGastos')) {
+      data = JSON.parse(this.cookie.get('lastGastos'));
+    } else {
+      data = this.deudaService.getDeuda();
     }
-    
-    console.log(data.gastos)
-    
-   
-    this.dataSource =new MatTableDataSource<Gasto>(data.gastos);
-    this.loading = true;
-    
-  }
 
+    console.log(data.gastos);
+
+    this.dataSource = new MatTableDataSource<Gasto>(data.gastos);
+    this.loading = true;
+    this.dataSource.paginator = this.paginator;
+  }
 }

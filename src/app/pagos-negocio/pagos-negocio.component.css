@@ -6,7 +6,11 @@ table {
   position: relative;
   top: 10px;
 }
-
+.mat-elevation-z8 {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
 .example-button-row button {
   float: right;
   height: 30px;

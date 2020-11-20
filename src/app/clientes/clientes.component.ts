@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { Cliente } from '../models/Cliente';
@@ -12,7 +14,7 @@ import { NegocioService } from '../services/negocio.service';
 })
 export class ClientesComponent implements OnInit {
   displayedColumns: string[];
-  dataSource = [];
+  dataSource: MatTableDataSource<Cliente>;
   loading = false;
   public clientes = [];
   constructor(
@@ -25,14 +27,15 @@ export class ClientesComponent implements OnInit {
       this.router.navigate(['']);
     }
   }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit(): void {
-    console.log(this.appComponent.info);
     this.negocioService
-      .getNegociobyPerfil_id(this.appComponent.info.id)
+      .getNegociobyPerfil_id(this.appComponent.id)
       .subscribe((data) => {
+        console.log(data);
         this.clientes = data.clientes;
-        this.dataSource = data.clientes;
+        this.dataSource = new MatTableDataSource<Cliente>(data.clientes);
         this.loading = true;
         this.displayedColumns = [
           'id',
@@ -41,6 +44,7 @@ export class ClientesComponent implements OnInit {
           'perfil.direccion',
           'perfil.correo',
         ];
+        this.dataSource.paginator = this.paginator;
       });
   }
 }

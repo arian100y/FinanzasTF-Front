@@ -15,6 +15,7 @@ export class DeudasComponent implements OnInit {
   displayedColumns: String[];
   constructor(private clienteService: ClienteService, private router: Router) {}
   loading = false;
+  deudasReales = [];
   ngOnInit(): void {
     this.displayedColumns = [
       'id',
@@ -29,7 +30,17 @@ export class DeudasComponent implements OnInit {
       let deudas = this.cliente.deudas;
       deudas.sort((a, b) => b.id - a.id);
       this.deudas = deudas;
+      this.deudasReales = deudas;
 
+      for (let i = 0; i < this.dataSource.length; i++) {
+        const date = this.dataSource[i].fecha;
+
+        let fech = new Date(date);
+
+        this.dataSource[i].fecha = `${fech.getDay()}/${
+          fech.getMonth() + 1
+        }/${fech.getFullYear()}`;
+      }
       this.dataSource = this.deudas;
       this.displayedColumns = [
         'id',
@@ -42,9 +53,17 @@ export class DeudasComponent implements OnInit {
       this.loading = true;
     });
   }
+  findDeuda(id) {
+    for (let i = 0; i < this.deudas.length; i++) {
+      const element = this.deudas[i];
 
+      if (element.id === id) {
+        return i;
+      }
+    }
+  }
   goToGastos(row) {
-    this.clienteService.saveDeuda(row);
+    this.clienteService.saveDeuda(this.deudasReales[this.findDeuda(row.id)]);
     this.router.navigate(['gastos-cobros-negocio']);
   }
 }
