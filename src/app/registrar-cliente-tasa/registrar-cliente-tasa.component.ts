@@ -15,7 +15,7 @@ interface Tiempos {
 @Component({
   selector: 'app-registrar-cliente-tasa',
   templateUrl: './registrar-cliente-tasa.component.html',
-  styleUrls: ['./registrar-cliente-tasa.component.css']
+  styleUrls: ['./registrar-cliente-tasa.component.css'],
 })
 export class RegistrarClienteTasaComponent implements OnInit {
   tasa: Tasa;
@@ -82,9 +82,8 @@ export class RegistrarClienteTasaComponent implements OnInit {
 
   isNumberKey(evt) {
     console.log(evt.keyCode);
-    let charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (charCode != 46 && charCode > 31
-      && (charCode < 48 || charCode > 57))
+    let charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
       return false;
 
     return true;
@@ -94,21 +93,21 @@ export class RegistrarClienteTasaComponent implements OnInit {
     this.loading = true;
     let errs = this.checkForm();
     if (Object.keys(errs).length === 0) {
-
       this.client.tasa = this.tasa;
       console.log(this.client);
-      this.clienteService.registrar(this.client).subscribe(data => {
-        this.router.navigate(['clientes']);
-      }, error => {
-        console.log(error);
-      })
-
+      this.clienteService.registrar(this.client).subscribe(
+        (data) => {
+          this.router.navigate(['clientes']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     } else {
       this.loading = false;
-      Object.keys(errs).forEach(key => {
+      Object.keys(errs).forEach((key) => {
         this.errores[key] = errs[key];
-      })
+      });
     }
-
   }
 }

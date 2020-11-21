@@ -60,18 +60,15 @@ export class GastosCobrosNegocioComponent implements OnInit {
     this.clienteService.ded.subscribe((data) => {
       this.deuda = data;
 
-      console.log('data', data);
       //deudas.sort((a, b) => a.id - b.id);
 
       //this.gastos = deudas[0].gastos;
+      this.dataSource = this.deuda.gastos;
+      this.displayedColumns = ['descripcion', 'monto', 'fecha', 'envioMonto'];
 
-      this.displayedColumns = [
-        'id',
-        'descripcion',
-        'monto',
-        'fecha',
-        'envioMonto',
-      ];
+      if (this.deuda.pagado === true) {
+        document.getElementById('buttonPaid').classList.toggle('disabled');
+      }
     });
 
     this.clienteService.share.subscribe((data) => {

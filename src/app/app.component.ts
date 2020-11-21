@@ -62,6 +62,15 @@ export class AppComponent {
 
     //console.log(this.info.id);
   }
+  toggle(event) {
+    console.log('id', event.target.id);
+    document.querySelectorAll('a').forEach((elemenet) => {
+      if (elemenet.className == 'active') {
+        elemenet.classList.toggle('active');
+      }
+    });
+    document.getElementById(event.target.id).classList.toggle('active');
+  }
 
   signOut() {
     this.loggedInNegocio = this.loggedInCliente = false;

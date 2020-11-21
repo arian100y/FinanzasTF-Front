@@ -29,7 +29,7 @@
     <ng-container matColumnDef="monto">
       <th mat-header-cell *matHeaderCellDef>Monto a Pagar</th>
       <td mat-cell *matCellDef="let cliente">
-        {{ cliente.deudas[cliente.deudas.length - 1].monto }}
+        {{ soles(cliente) }}
       </td>
     </ng-container>
 

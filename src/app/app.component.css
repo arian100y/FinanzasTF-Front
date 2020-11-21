@@ -3,7 +3,6 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  
 }
 nav {
   width: 100%;
@@ -23,10 +22,15 @@ li a {
   text-align: center;
   padding: 15px 16px;
   text-decoration: none;
-  
 }
-.bye{
+.bye {
   border-radius: 25px;
+}
+.active {
+  background-color: rgb(53, 139, 179);
+}
+.not-active {
+  background-color: rgb(40, 108, 139);
 }
 /* Change the link color to #111 (black) on hover */
 li a:hover {
@@ -39,11 +43,9 @@ li a:hover {
   float: right;
   background-color: rgb(54, 54, 54);
   cursor: pointer;
- 
 }
 .test :hover {
   float: right;
   background-color: rgb(95, 95, 95);
   cursor: pointer;
 }
-

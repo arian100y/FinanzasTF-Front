@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Cliente } from '../models/Cliente';
 import { Deuda } from '../models/Deuda';
 import { Negocio } from '../models/Negocio';
- 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -24,7 +24,7 @@ export class ClienteService {
     return this.http.post<any>(`${this.url}/verify`, client);
   }
 
- registrar(cliente: Cliente): Observable<Cliente> {
+  registrar(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(this.url, cliente);
   }
 
@@ -34,8 +34,14 @@ export class ClienteService {
   saveDeuda(deuda: Deuda) {
     this.deuda.next(deuda);
   }
+  deleteCliente(id): Observable<Cliente> {
+    return this.http.post<Cliente>(`${this.url}/delete/${id}`, null);
+  }
   getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.url);
+  }
+  editCliente(cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(`${this.url}/edit`, cliente);
   }
 
   getClienteByDNI(DNI: Number): Observable<Cliente> {

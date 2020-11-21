@@ -38,16 +38,44 @@ export class CuentasComponent implements OnInit {
           'id',
           'perfil.nombre',
           'tasa',
+          'credito',
           'deudaMonto',
+          'moneda',
           'actions',
+          'cuentas',
         ];
         this.dataSource.paginator = this.paginator;
       });
   }
 
+  openModal(row) {
+    this.selectedCliente = row;
+
+    document.getElementById('myModal').style.display = 'block';
+  }
+  closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+  }
+  selectedCliente = new Cliente();
+  moneda(row) {
+    if (row.tasa.moneda == 1) {
+      return 'Dolares';
+    } else {
+      return 'Soles';
+    }
+  }
+  soles(row) {
+    if (row.tasa.moneda == 1) {
+      return '$ ' + row.deudas[row.deudas.length - 1].monto;
+    } else {
+      return 'S/' + row.deudas[row.deudas.length - 1].monto;
+    }
+  }
   goToDeudas(row) {
     this.clienteService.saveCliente(row);
     this.router.navigate(['deudas']);
     //this.router.navigate(['gastos-cobros-negocio']);
   }
+
+  guardarCambios() {}
 }
