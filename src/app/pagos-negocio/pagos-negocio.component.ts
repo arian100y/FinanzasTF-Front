@@ -32,7 +32,13 @@ export class PagosNegocioComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
   }
-
+  soles(row) {
+    if (row.tasa.moneda == 1) {
+      return '$ ' + row.deudas[row.deudas.length - 1].monto;
+    } else {
+      return 'S/' + row.deudas[row.deudas.length - 1].monto;
+    }
+  }
   getEstado(estado) {
     if (estado === false) {
       return 'No pagado.';

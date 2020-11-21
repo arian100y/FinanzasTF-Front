@@ -1,15 +1,11 @@
-<div [hidden]="!loading" class="example-button-row">
-  <div style="float: left; margin-left: 5%">
-    <h1>Clientes</h1>
-  </div>
-  <button
-    routerLink="/registrar-cliente"
-    mat-raised-button
-    style="float: right"
-  >
+<div style="margin-left: 5%; margin-right: 5%; display: flex">
+  <h4 class="title">Clientes</h4>
+  <button class="register" routerLink="/registrar-cliente" mat-raised-button>
     Registrar Cliente
   </button>
 </div>
+<div class="redBar"></div>
+<h4 class="title"></h4>
 
 <div class="mat-elevation-z8" [hidden]="!loading">
   <table mat-table [dataSource]="dataSource">
@@ -25,7 +21,10 @@
     <!-- Name Column -->
     <ng-container matColumnDef="perfil.nombre">
       <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.perfil.nombre }}</td>
+      <td mat-cell *matCellDef="let cliente">
+        {{ cliente.perfil.nombre }} {{ cliente.perfil.apellidoP }}
+        {{ cliente.perfil.apellidoM }}
+      </td>
     </ng-container>
 
     <!-- Weight Column -->
@@ -46,6 +45,14 @@
       <td mat-cell *matCellDef="let cliente">{{ cliente.perfil.correo }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button id="but" (click)="delete(row)" mat-raised-button>
+          Borrar Cliente
+        </button>
+      </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>

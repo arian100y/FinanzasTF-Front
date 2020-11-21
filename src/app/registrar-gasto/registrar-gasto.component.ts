@@ -50,6 +50,7 @@ export class RegistrarGastoComponent implements OnInit {
       this.dataSource = this.gastos;
       this.displayedColumns = ['id', 'fecha', 'valor'];
     });
+
     this.resetErrors();
   }
   addEvent(event: MatDatepickerInput<Date>) {
@@ -103,7 +104,9 @@ export class RegistrarGastoComponent implements OnInit {
     if (Object.keys(errs).length === 0) {
       this.gasto.deuda_id = this.deuda.id;
       this.gastoService.postGasto(this.gasto).subscribe((data) => {
-        this.router.navigate(['cuentas']);
+        this.deuda.gastos.push(this.gasto);
+        this.clienteService.saveDeuda(this.deuda);
+        this.router.navigate(['gastos-cobros-negocio']);
       });
     } else {
       this.loading = false;

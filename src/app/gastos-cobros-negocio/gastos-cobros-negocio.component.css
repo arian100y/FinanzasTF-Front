@@ -52,11 +52,14 @@ button:hover {
   padding: 10px 10px;
   border-radius: 25px;
 }
+.disabled {
+  pointer-events: none;
+}
 .title {
   margin-left: 5%;
   margin-top: 2vh;
   color: rgb(50, 50, 50);
-  font-size: 20px;
+  font-size: 30px;
 }
 .redBar {
   border-bottom: 2px solid rgb(40, 108, 139);

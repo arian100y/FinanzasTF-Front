@@ -5,22 +5,39 @@ table {
   position: relative;
   top: 10px;
 }
+.register {
+  margin-left: 80%;
+
+  height: 30px;
+  background-color: rgb(59, 59, 59);
+  color: white;
+}
+#but {
+  background-color: rgb(177, 34, 34);
+  color: white;
+}
+#but:hover {
+  background-color: rgb(253, 55, 55);
+  color: white;
+}
+.register:hover {
+  background-color: rgb(78, 78, 78);
+}
 .mat-elevation-z8 {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
 }
 .title {
-  margin-left: 5%;
-  margin-top: 2vh;
   color: rgb(50, 50, 50);
-  font-size: 20px;
+  font-size: 30px;
 }
 .redBar {
   border-bottom: 2px solid rgb(40, 108, 139);
   margin-left: 5%;
   margin-right: 5%;
 }
+
 .example-button-row button {
   float: right;
   height: 30px;

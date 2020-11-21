@@ -6,25 +6,31 @@ import { Negocio } from '../models/Negocio';
 @Component({
   selector: 'app-notificaciones-negocio',
   templateUrl: './notificaciones-negocio.component.html',
-  styleUrls: ['./notificaciones-negocio.component.css']
+  styleUrls: ['./notificaciones-negocio.component.css'],
 })
 export class NotificacionesComponent implements OnInit {
   dataSource = [];
-  negocio:Negocio
+  negocio: Negocio;
 
-  constructor(private router: Router, private appComponent: AppComponent) {
+  constructor(
+    private clienteService: ClienteService,
+    private router: Router,
+    private appComponent: AppComponent
+  ) {
     if (this.appComponent.loggedInNegocio === false) {
       this.router.navigate(['']);
     }
-
   }
 
   ngOnInit(): void {
-    
-    this.negocio = this.appComponent.info
-    console.log(this.negocio)
-    console.log(this.negocio.clientes)
-    this.dataSource = this.negocio.clientes
+    this.negocio = this.appComponent.info;
+    console.log(this.negocio);
+    console.log(this.negocio.clientes);
+    this.dataSource = this.negocio.clientes;
+  }
 
+  goToDeuda(row) {
+    this.clienteService.saveCliente(row);
+    this.router.navigate(['deudas']);
   }
 }

@@ -1,22 +1,36 @@
-<nav >
- <ul >
-  <li [hidden] = "loggedInCliente || loggedInNegocio"><a routerLink="/">Home</a></li>
-    
-  <li [hidden] = "!loggedInNegocio"><a routerLink="/clientes">Clientes</a></li>
-  <li [hidden] = "!loggedInNegocio"><a routerLink="/cuentas">Cuentas</a></li>
-  <li [hidden] = "!loggedInNegocio"><a routerLink="/pagos-negocio">Pagos</a></li>
-  <li [hidden] = "!loggedInNegocio"><a routerLink="/notificaciones">Notificaciones</a></li>
+<nav [hidden]="!loggedInCliente && !loggedInNegocio" style="margin-bottom: 2%">
+  <ul>
+    <li [hidden]="loggedInCliente || loggedInNegocio">
+      <a routerLink="/">Home</a>
+    </li>
 
-  <li [hidden] = "!loggedInCliente"><a routerLink="/pagos-cliente">Pagos</a></li>
-  <li [hidden] = "!loggedInCliente"><a routerLink="/perfil">Perfil</a></li>
-  <li [hidden] = "!loggedInCliente"><a routerLink="/notificaciones">Notificaciones</a></li>
+    <li [hidden]="!loggedInNegocio">
+      <a id="1" (click)="toggle($event)" routerLink="/clientes">Clientes</a>
+    </li>
+    <li [hidden]="!loggedInNegocio">
+      <a id="2" (click)="toggle($event)" routerLink="/cuentas">Cuentas</a>
+    </li>
+    <li [hidden]="!loggedInNegocio">
+      <a id="3" (click)="toggle($event)" routerLink="/pagos-negocio">Pagos</a>
+    </li>
+    <li [hidden]="!loggedInNegocio">
+      <a id="4" (click)="toggle($event)" routerLink="/notificaciones"
+        >Notificaciones</a
+      >
+    </li>
 
-  <li [hidden] = "!loggedInCliente && !loggedInNegocio" class="test"><a (click)="signOut()">Salir</a></li>
-</ul> 
+    <li [hidden]="!loggedInCliente">
+      <a routerLink="/pagos-cliente">Pagos</a>
+    </li>
+    <li [hidden]="!loggedInCliente"><a routerLink="/perfil">Perfil</a></li>
+    <li [hidden]="!loggedInCliente">
+      <a routerLink="/notificaciones">Notificaciones</a>
+    </li>
+
+    <li [hidden]="!loggedInCliente && !loggedInNegocio" class="test">
+      <a (click)="signOut()">Salir</a>
+    </li>
+  </ul>
 </nav>
 
-
-  <router-outlet ></router-outlet>
-
-
-
+<router-outlet></router-outlet>

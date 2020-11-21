@@ -28,14 +28,13 @@ input[type="number"] {
   transition: all 0.4s;
   margin-left: 40%;
 }
-input:focus{
+input:focus {
   border: 2px solid black;
-
 }
-input::placeholder{
+input::placeholder {
   transition: all 0.3s;
 }
-input:hover::placeholder{
+input:hover::placeholder {
   font-size: 17px;
 }
 input::-webkit-outer-spin-button,
@@ -79,7 +78,7 @@ mat-form-field {
 button:hover {
   opacity: 0.8;
 }
-p{
+p {
   margin-left: 40%;
 }
 

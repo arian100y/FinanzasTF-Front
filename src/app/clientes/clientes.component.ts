@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -21,7 +21,8 @@ export class ClientesComponent implements OnInit {
     private clienteService: ClienteService,
     private negocioService: NegocioService,
     private router: Router,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private changeDetectorRefs: ChangeDetectorRef
   ) {
     if (this.appComponent.loggedInNegocio === false) {
       this.router.navigate(['']);
@@ -29,6 +30,17 @@ export class ClientesComponent implements OnInit {
   }
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  delete(row) {
+    console.log(this.dataSource.data.length);
+    let index = this.dataSource.data.indexOf(row);
+    this.dataSource.data.splice(index, 1);
+    this.changeDetectorRefs.detectChanges();
+    this.dataSource = new MatTableDataSource(this.dataSource.data);
+    console.log(this.dataSource.data.length);
+    this.clienteService.deleteCliente(row.id).subscribe((data) => {
+      console.log(data);
+    });
+  }
   ngOnInit(): void {
     this.negocioService
       .getNegociobyPerfil_id(this.appComponent.id)
@@ -43,6 +55,7 @@ export class ClientesComponent implements OnInit {
           'perfil.dni',
           'perfil.direccion',
           'perfil.correo',
+          'actions',
         ];
         this.dataSource.paginator = this.paginator;
       });

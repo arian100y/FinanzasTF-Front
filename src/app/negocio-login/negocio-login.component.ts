@@ -50,11 +50,10 @@ export class NegocioLoginComponent implements OnInit {
           this.appComponent.loggedInNegocio = true;
           this.appComponent.info = new Perfil();
           this.negocioService.getNegocioByRUC(this.ruc).subscribe((data) => {
+            this.cookie.set('loggedInNegocio', 'yes');
             this.appComponent.info = data;
             this.appComponent.id = data.id;
             this.cookie.set('negocio', data.id.toString());
-
-            this.cookie.set('loggedInNegocio', 'yes');
 
             this.router.navigate(['clientes']);
           });

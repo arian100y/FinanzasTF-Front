@@ -2,7 +2,31 @@
 form {
   border: 0px solid #f1f1f1;
 }
+.previous {
+  background-color: rgb(40, 108, 139);
+  color: white;
+}
+a {
+  margin-top: 4%;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: 0;
+  margin-left: 3%;
+  transform: scale(1.3);
+  transition: all 0.2s;
+}
 
+a:hover {
+  background-color: rgb(109, 175, 206);
+  color: black;
+}
+.round {
+  border-radius: 50%;
+}
+body {
+  overflow-y: hidden;
+}
 /* Full-width inputs */
 input[type="text"],
 input[type="password"],
@@ -18,14 +42,13 @@ input[type="number"] {
   transition: all 0.4s;
   font-size: 20px;
 }
-input:focus{
+input:focus {
   border: 2px solid black;
-
 }
-input::placeholder{
+input::placeholder {
   transition: all 0.3s;
 }
-input:hover::placeholder{
+input:hover::placeholder {
   font-size: 25px;
 }
 input::-webkit-outer-spin-button,
@@ -33,8 +56,8 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-label{
-  font-family: 'Poppins', sans-serif;
+label {
+  font-family: "Poppins", sans-serif;
   font-size: 25px;
   letter-spacing: 1px;
 }
@@ -59,17 +82,16 @@ button {
 
 /* Add a hover effect for buttons */
 button:hover {
-  background-color:  rgb(51, 138, 179);
-
+  background-color: rgb(51, 138, 179);
 }
 
 .title {
   text-align: center;
-  margin-top: 9vh;
-  color:  rgb(40, 108, 139);
+  margin-top: 3vh;
+  color: rgb(40, 108, 139);
   font-size: 40px;
-  margin-bottom: 4%;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 3%;
+  font-family: "Poppins", sans-serif;
 }
 /* Extra style for the cancel button (red) */
 .cancelbtn {
@@ -82,13 +104,11 @@ button:hover {
 
 /* Add padding to containers */
 .container {
- 
-  
   padding: 16px;
-  
+
   text-align: center;
 }
-.container *{
+.container * {
   margin-bottom: 1%;
 }
 
@@ -98,7 +118,6 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
-
 
 .input {
   display: block;
@@ -116,6 +135,10 @@ span.psw {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
