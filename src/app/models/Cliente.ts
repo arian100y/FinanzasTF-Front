@@ -12,7 +12,8 @@ export class Cliente{
         this.deudas = new Array<Deuda>();
         this.moneda =this.fechaEmision = this.credito= "";
     }
-    mantenimiento:boolean;
+    mantenimiento:number;
+    periodoMantenimiento:number;
     moneda:string;
     negocio_id:number;
     perfil:Perfil;

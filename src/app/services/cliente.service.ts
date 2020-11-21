@@ -9,8 +9,8 @@ import { Negocio } from '../models/Negocio';
   providedIn: 'root',
 })
 export class ClienteService {
-  private url: string = 'https://finanzas-tp.herokuapp.com/clientes';
-  //private url: string = "http://localhost:8080/clientes"
+  //private url: string = 'https://finanzas-tp.herokuapp.com/clientes';
+  private url: string = "http://localhost:8080/clientes"
   constructor(private http: HttpClient) {}
 
   private cliente = new BehaviorSubject<Cliente>(new Cliente());

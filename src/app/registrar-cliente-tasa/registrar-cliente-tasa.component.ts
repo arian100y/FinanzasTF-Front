@@ -18,96 +18,97 @@ interface Tiempos {
   styleUrls: ['./registrar-cliente-tasa.component.css']
 })
 export class RegistrarClienteTasaComponent implements OnInit {
-  tasa : Tasa;
-  client:Cliente;
-  
+  tasa: Tasa;
+  client: Cliente;
+
   errores = {
-    monto:null,
-    tipo:null,
-    periodo : null
+    monto: null,
+    tipo: null,
+    periodo: null
   }
   loading = false;
-  constructor(private clienteService:ClienteService,private router:Router) {this.resetErrors() }
+  constructor(private clienteService: ClienteService, private router: Router) { this.resetErrors() }
   foods: Tasas[] = [
-    {value: 0, viewValue: 'Tasa Simple'},
-    {value: 1, viewValue: 'Tasa Nominal'},
-    {value: 2, viewValue: 'Tasa Efectiva'}
+    { value: 0, viewValue: 'Tasa Simple' },
+    { value: 1, viewValue: 'Tasa Nominal' },
+    { value: 2, viewValue: 'Tasa Efectiva' }
   ];
   foods2: Tiempos[] = [
-    {value: 0, viewValue: 'Diaria'},
-    {value: 1, viewValue: 'Mensual'},
-    {value: 2, viewValue: 'Bimestral'},
-    {value: 3, viewValue: 'Anual'}
+    { value: 0, viewValue: 'Diaria' },
+    { value: 1, viewValue: 'Semanal' },
+    { value: 2, viewValue: 'Mensual' },
+    { value: 3, viewValue: 'Bimestral' },
+    { value: 4, viewValue: 'Trimestral' },
+    { value: 5, viewValue: 'Cuatrimestral' },
+    { value: 6, viewValue: 'Semestral' },
+    { value: 7, viewValue: 'Anual' }
   ];
   ngOnInit(): void {
     this.tasa = new Tasa();
 
-    this.clienteService.share.subscribe(data=>{ 
-    this.client = data;
-    this.client.mantenimiento = false;
-    
-
+    this.clienteService.share.subscribe(data => {
+      this.client = data;
     });
-   console.log(this.client.perfil.nombre);
+    console.log(this.client.perfil.nombre);
 
   }
-  resetErrors(){
-    Object.keys(this.errores).forEach(key=>{
-      this.errores[key] = ["",false];
+  resetErrors() {
+    Object.keys(this.errores).forEach(key => {
+      this.errores[key] = ["", false];
     })
   }
-  
-  checkForm():{}{
+
+  checkForm(): {} {
     let errors = {}
-    
-    
-    if(this.tasa.monto === null) {
+
+
+    if (this.tasa.monto === null) {
       errors["monto"] = ["Monto de tasa no puede estar vacio.", true]
-    }else
-    if(this.tasa.monto === 0 ){
-      errors["monto"] = ["Monto de tasa no puede ser 0.", true]
-    }
-   
-    if(this.tasa.periodo === null) {
+    } else
+      if (this.tasa.monto === 0) {
+        errors["monto"] = ["Monto de tasa no puede ser 0.", true]
+      }
+
+    if (this.tasa.periodo === null) {
       errors["periodo"] = ["Periodo no puede estar vacio.", true]
     }
-    if(this.tasa.tipo === null) {
+    if (this.tasa.tipo === null) {
       errors["tipo"] = ["Tipo no puede estar vacio.", true]
     }
-   
-    
+
+
     return errors;
   }
 
-  isNumberKey(evt){
+  isNumberKey(evt) {
     console.log(evt.keyCode);
     let charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (charCode != 46 && charCode > 31 
+    if (charCode != 46 && charCode > 31
       && (charCode < 48 || charCode > 57))
-        return false;
+      return false;
 
     return true;
- }
-  registerCliente(){
+  }
+  registerCliente() {
     //let client = this.regClienteComponent.cliente;
-    this.loading= true;
+    this.loading = true;
     let errs = this.checkForm();
-    if(Object.keys(errs).length === 0){
+    if (Object.keys(errs).length === 0) {
 
-    this.client.tasa = this.tasa;
-    console.log(this.client);
-    this.clienteService.registrar(this.client).subscribe(data=>{
-    this.router.navigate(['clientes']);
-      },error=>{
-      console.log(error);
-    })
+      this.client.tasa = this.tasa;
+      console.log(this.client);
+      this.clienteService.registrar(this.client).subscribe(data => {
+        this.router.navigate(['clientes']);
+      }, error => {
+        console.log(error);
+      })
 
-    }else{
+    } else {
       this.loading = false;
-      Object.keys(errs).forEach(key=>{
+      Object.keys(errs).forEach(key => {
         this.errores[key] = errs[key];
       })
     }
-    
+
   }
 }
