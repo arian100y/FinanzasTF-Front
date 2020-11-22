@@ -83,9 +83,19 @@
       Editar cuenta de: {{ selectedCliente.perfil.nombre }}
     </h1>
     <label style="font-size: 20px" class="input">Nuevo Credito:</label>
-    <input placeholder="{{ selectedCliente.credito }}" class="input" />
+    <input
+      placeholder="{{ selectedCliente.credito }}"
+      class="input"
+      [(ngModel)]="selectedCliente.credito"
+    />
     <label style="font-size: 20px" class="input">Nueva Tasa:</label>
-    <input placeholder="{{ selectedCliente.tasa.monto }} %" class="input" />
-    <button class="register">Guardar cambios!</button>
+    <input
+      placeholder="{{ selectedCliente.tasa.monto }} %"
+      class="input"
+      [(ngModel)]="selectedCliente.tasa.monto"
+    />
+    <button class="register" (click)="guardarCambios()">
+      Guardar cambios!
+    </button>
   </div>
 </div>

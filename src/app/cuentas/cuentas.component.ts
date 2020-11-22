@@ -77,5 +77,11 @@ export class CuentasComponent implements OnInit {
     //this.router.navigate(['gastos-cobros-negocio']);
   }
 
-  guardarCambios() {}
+  guardarCambios() {
+    console.log(this.selectedCliente);
+    this.clienteService.editCliente(this.selectedCliente).subscribe((data) => {
+      console.log();
+      this.closeModal();
+    });
+  }
 }
