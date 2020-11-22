@@ -8,9 +8,10 @@ export class Deuda{
     }
     gastos:Gasto[];
     cliente_id: number;
-    fecha: string ;
+    fecha: string;
     interes: number;
     metodoPago: boolean;
     monto: number;
+    montoMantenimiento: number;
     pagado: boolean;
 }

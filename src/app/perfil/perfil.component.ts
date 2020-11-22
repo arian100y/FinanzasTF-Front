@@ -11,8 +11,8 @@ import { ClienteService } from '../services/cliente.service';
 export class PerfilComponent implements OnInit {
   tipoTasa = ['Tasa simple', 'Tasa nominal', 'Tasa efectiva'];
   tipoTasaAbreviacion = ['S', 'N', 'E'];
-  tipoPeriodo = ['D', 'S', 'M', 'B', 'T', 'C', 'S', 'A'];
-  periodosMantenimiento = ['diario', 'semanal','mensual', 'bimestral', 'trimestral', 'cuatrimestral', 'semestral', 'anual'];
+  tipoPeriodo = ['D', 'S', 'Q', 'M', 'B', 'T', 'C', 'S', 'A'];
+  periodosMantenimiento = ['semanal', 'quincenal', 'mensual'];
 
   public cliente = new Cliente();
   constructor(private appComponent: AppComponent, private clienteService: ClienteService) { }

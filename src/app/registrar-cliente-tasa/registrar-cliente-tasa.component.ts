@@ -43,22 +43,24 @@ export class RegistrarClienteTasaComponent implements OnInit {
   foods2: Tiempos[] = [
     { value: 0, viewValue: 'Diaria' },
     { value: 1, viewValue: 'Semanal' },
-    { value: 2, viewValue: 'Mensual' },
-    { value: 3, viewValue: 'Bimestral' },
-    { value: 4, viewValue: 'Trimestral' },
-    { value: 5, viewValue: 'Cuatrimestral' },
-    { value: 6, viewValue: 'Semestral' },
-    { value: 7, viewValue: 'Anual' },
+    { value: 2, viewValue: 'Quincenal' },
+    { value: 3, viewValue: 'Mensual' },
+    { value: 4, viewValue: 'Bimestral' },
+    { value: 5, viewValue: 'Trimestral' },
+    { value: 6, viewValue: 'Cuatrimestral' },
+    { value: 7, viewValue: 'Semestral' },
+    { value: 8, viewValue: 'Anual' }
   ];
   foods3: Tiempos2[] = [
     { value: 0, viewValue: 'Diaria' },
     { value: 1, viewValue: 'Semanal' },
-    { value: 2, viewValue: 'Mensual' },
-    { value: 3, viewValue: 'Bimestral' },
-    { value: 4, viewValue: 'Trimestral' },
-    { value: 5, viewValue: 'Cuatrimestral' },
-    { value: 6, viewValue: 'Semestral' },
-    { value: 7, viewValue: 'Anual' },
+    { value: 2, viewValue: 'Quincenal' },
+    { value: 3, viewValue: 'Mensual' },
+    { value: 4, viewValue: 'Bimestral' },
+    { value: 5, viewValue: 'Trimestral' },
+    { value: 6, viewValue: 'Cuatrimestral' },
+    { value: 7, viewValue: 'Semestral' },
+    { value: 8, viewValue: 'Anual' }
   ];
   ngOnInit(): void {
     this.tasa = new Tasa();

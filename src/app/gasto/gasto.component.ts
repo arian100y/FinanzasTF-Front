@@ -46,3 +46,4 @@ export class GastoComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 }
+

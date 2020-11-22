@@ -45,14 +45,9 @@ export class RegistrarClienteComponent implements OnInit {
     { value: 'dolares', viewValue: 'Dolar' }
   ];
   periodos: Tiempos[] = [
-    { value: 0, viewValue: 'Diaria' },
-    { value: 1, viewValue: 'Semanal' },
-    { value: 2, viewValue: 'Mensual' },
-    { value: 3, viewValue: 'Bimestral' },
-    { value: 4, viewValue: 'Trimestral' },
-    { value: 5, viewValue: 'Cuatrimestral' },
-    { value: 6, viewValue: 'Semestral' },
-    { value: 7, viewValue: 'Anual' }
+    { value: 0, viewValue: 'Semanal' },
+    { value: 1, viewValue: 'Quincenal' },
+    { value: 2, viewValue: 'Mensual' }
   ];
 
 
@@ -77,6 +72,7 @@ export class RegistrarClienteComponent implements OnInit {
 
     this.deuda.interes = 0.0;
     this.deuda.monto = 0.0;
+    this.deuda.montoMantenimiento = 0.0;
     this.deuda.pagado = false;
     this.deuda.metodoPago = false;
 

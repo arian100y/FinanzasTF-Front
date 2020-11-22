@@ -6,12 +6,7 @@
 <h4 class="title"></h4>
 
 <div class="child1">
-  <table
-    [hidden]="!loading"
-    mat-table
-    [dataSource]="dataSource"
-    class="mat-elevation-z8"
-  >
+  <table [hidden]="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
@@ -95,36 +90,29 @@
     {{ cliente.perfil.direccion }} por concepto de compras y gastos.
   </h3>
 
-  <h3
-  style="
+  <h3 style="
     float: left;
     width: 100%;
     margin-left: 8%;
     margin-top: 8%;
-  "
->
-  {{ tipoTasa[cliente.tasa.tipo] }}: T{{
+  ">
+    {{ tipoTasa[cliente.tasa.tipo] }}: T{{
     tipoTasaAbreviacion[cliente.tasa.tipo]
   }}{{ tipoPeriodo[cliente.tasa.periodo] }} {{ cliente.tasa.monto * 100 }}%
-</h3>
-<h3
-  style="
+  </h3>
+  <h3 style="
     float: left;
     width: 100%;
     margin-left: 8%;
     line-height: 0;
-  "
->
-  Línea de Crédito: {{ cliente.credito }}
-</h3>
-<h3
-  id="state"
-  style="float: left; width: 100%; margin-left: 8%; margin-bottom: 8%"
->
-  Estado: {{ estado() }}
-</h3>
+  ">
+    Línea de Crédito: {{ cliente.credito }}
+  </h3>
+  <h3 id="state" style="float: left; width: 100%; margin-left: 8%; margin-bottom: 8%">
+    Estado: {{ estado() }}
+  </h3>
 
-  <table style="width: 40%; margin-top: 20%; margin: auto">
+  <table style="width: 40%; margin-top: 15%; margin: auto">
     <tr>
       <th style="width: auto; padding-right: 15px">
         <h3 style="float: left; width: 100%">Monto actual:</h3>
@@ -143,11 +131,27 @@
     </tr>
     <tr>
       <th style="width: auto; padding-right: 15px">
+        <h3 style="float: left; width: 100%">Mantenimiento:</h3>
+      </th>
+      <th style="width: auto; padding-right: 15px">
+        <h3 style="float: left; width: 100%">{{ deuda.montoMantenimiento }}</h3>
+      </th>
+    </tr>
+    <tr>
+      <th style="width: auto; padding-right: 15px">
+        <h3 style="float: left; width: 100%">Mora:</h3>
+      </th>
+      <th style="width: auto; padding-right: 15px">
+        <h3 style="float: left; width: 100%">FALTA</h3>
+      </th>
+    </tr>
+    <tr>
+      <th style="width: auto; padding-right: 15px">
         <h3 style="float: left; width: 100%">Total neto a pagar:</h3>
       </th>
       <th style="width: auto; padding-right: 15px">
         <h3 style="float: left; width: 100%">
-          {{ deuda.interes + deuda.monto }}
+          {{ deuda.interes + deuda.monto + deuda.montoMantenimiento}}
         </h3>
       </th>
     </tr>
