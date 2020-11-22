@@ -96,22 +96,33 @@
   </h3>
 
   <h3
-    style="
-      float: left;
-      width: 100%;
-      margin-left: 8%;
-      margin-top: 8%;
-      line-height: 0;
-    "
-  >
-    Línea de Crédito: {{ cliente.credito }}
-  </h3>
-  <h3
-    id="state"
-    style="float: left; width: 100%; margin-left: 8%; margin-bottom: 8%"
-  >
-    Estado: {{ estado() }}
-  </h3>
+  style="
+    float: left;
+    width: 100%;
+    margin-left: 8%;
+    margin-top: 8%;
+  "
+>
+  {{ tipoTasa[cliente.tasa.tipo] }}: T{{
+    tipoTasaAbreviacion[cliente.tasa.tipo]
+  }}{{ tipoPeriodo[cliente.tasa.periodo] }} {{ cliente.tasa.monto * 100 }}%
+</h3>
+<h3
+  style="
+    float: left;
+    width: 100%;
+    margin-left: 8%;
+    line-height: 0;
+  "
+>
+  Línea de Crédito: {{ cliente.credito }}
+</h3>
+<h3
+  id="state"
+  style="float: left; width: 100%; margin-left: 8%; margin-bottom: 8%"
+>
+  Estado: {{ estado() }}
+</h3>
 
   <table style="width: 40%; margin-top: 20%; margin: auto">
     <tr>

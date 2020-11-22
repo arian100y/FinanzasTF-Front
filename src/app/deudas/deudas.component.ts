@@ -23,7 +23,7 @@ export class DeudasComponent implements OnInit {
 
   tipoTasa = ['Tasa simple', 'Tasa nominal', 'Tasa efectiva'];
   tipoTasaAbreviacion = ['S', 'N', 'E'];
-  tipoPeriodo = ['D', 'M', 'B', 'A'];
+  tipoPeriodo = ['D', 'S', 'M', 'B', 'T', 'C', 'S', 'A'];
   tipo = '';
 
   constructor(

@@ -43,7 +43,12 @@ button:hover {
   margin-left: 5%;
   margin-right: 5%;
 }
-
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
 /* The "Forgot password" text */
 span.psw {
   margin-right: 50%;

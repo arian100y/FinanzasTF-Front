@@ -28,7 +28,7 @@ export class PagoComponent implements OnInit {
 
   tipoTasa = ['Tasa simple', 'Tasa nominal', 'Tasa efectiva'];
   tipoTasaAbreviacion = ['S', 'N', 'E'];
-  tipoPeriodo = ['D', 'M', 'B', 'A'];
+  tipoPeriodo = ['D', 'S', 'M', 'B', 'T', 'C', 'S', 'A'];
   tipo = '';
   constructor(
     private router: Router,
@@ -66,5 +66,24 @@ export class PagoComponent implements OnInit {
     this.deudaService.saveDeuda(element);
     this.cookies.set('lastGastos', JSON.stringify(element));
     this.router.navigate(['gastos-actuales']);
+  }
+  
+  estado() {
+    if (parseFloat(this.cliente.credito) < 0) {
+      if (
+        document.getElementById('state').classList.contains('red') === false
+      ) {
+        document.getElementById('state').classList.toggle('red');
+      }
+
+      return 'El cliente ha sobrepasado el limite de credito. ';
+    } else {
+      if (
+        document.getElementById('state').classList.contains('green') === false
+      ) {
+        document.getElementById('state').classList.toggle('green');
+      }
+      return 'El cliente no sobrepasa el limite de credito.';
+    }
   }
 }

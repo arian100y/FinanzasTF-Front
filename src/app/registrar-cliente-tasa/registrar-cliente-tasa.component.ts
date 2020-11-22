@@ -12,6 +12,11 @@ interface Tiempos {
   value: number;
   viewValue: string;
 }
+
+interface Tiempos2 {
+  value: number;
+  viewValue: string;
+}
 @Component({
   selector: 'app-registrar-cliente-tasa',
   templateUrl: './registrar-cliente-tasa.component.html',
@@ -24,14 +29,16 @@ export class RegistrarClienteTasaComponent implements OnInit {
   errores = {
     monto: null,
     tipo: null,
-    periodo: null
-  }
+    periodo: null,
+  };
   loading = false;
-  constructor(private clienteService: ClienteService, private router: Router) { this.resetErrors() }
+  constructor(private clienteService: ClienteService, private router: Router) {
+    this.resetErrors();
+  }
   foods: Tasas[] = [
     { value: 0, viewValue: 'Tasa Simple' },
     { value: 1, viewValue: 'Tasa Nominal' },
-    { value: 2, viewValue: 'Tasa Efectiva' }
+    { value: 2, viewValue: 'Tasa Efectiva' },
   ];
   foods2: Tiempos[] = [
     { value: 0, viewValue: 'Diaria' },
@@ -41,41 +48,52 @@ export class RegistrarClienteTasaComponent implements OnInit {
     { value: 4, viewValue: 'Trimestral' },
     { value: 5, viewValue: 'Cuatrimestral' },
     { value: 6, viewValue: 'Semestral' },
-    { value: 7, viewValue: 'Anual' }
+    { value: 7, viewValue: 'Anual' },
+  ];
+  foods3: Tiempos2[] = [
+    { value: 0, viewValue: 'Diaria' },
+    { value: 1, viewValue: 'Semanal' },
+    { value: 2, viewValue: 'Mensual' },
+    { value: 3, viewValue: 'Bimestral' },
+    { value: 4, viewValue: 'Trimestral' },
+    { value: 5, viewValue: 'Cuatrimestral' },
+    { value: 6, viewValue: 'Semestral' },
+    { value: 7, viewValue: 'Anual' },
   ];
   ngOnInit(): void {
     this.tasa = new Tasa();
 
-    this.clienteService.share.subscribe(data => {
+    this.clienteService.share.subscribe((data) => {
       this.client = data;
     });
     console.log(this.client.perfil.nombre);
-
   }
   resetErrors() {
-    Object.keys(this.errores).forEach(key => {
-      this.errores[key] = ["", false];
-    })
+    Object.keys(this.errores).forEach((key) => {
+      this.errores[key] = ['', false];
+    });
   }
 
   checkForm(): {} {
-    let errors = {}
-
+    let errors = {};
 
     if (this.tasa.monto === null) {
-      errors["monto"] = ["Monto de tasa no puede estar vacio.", true]
-    } else
-      if (this.tasa.monto === 0) {
-        errors["monto"] = ["Monto de tasa no puede ser 0.", true]
-      }
+      errors['monto'] = ['Monto de tasa no puede estar vacio.', true];
+    } else if (this.tasa.monto === 0) {
+      errors['monto'] = ['Monto de tasa no puede ser 0.', true];
+    }
 
     if (this.tasa.periodo === null) {
-      errors["periodo"] = ["Periodo no puede estar vacio.", true]
-    }
-    if (this.tasa.tipo === null) {
-      errors["tipo"] = ["Tipo no puede estar vacio.", true]
+      errors['periodo'] = ['Periodo no puede estar vacio.', true];
     }
 
+    if (this.tasa.periodoCapitalizacion === null) {
+      errors['periodoCapitalizacion'] = ['Periodo no puede estar vacio.', true];
+    }
+
+    if (this.tasa.tipo === null) {
+      errors['tipo'] = ['Tipo no puede estar vacio.', true];
+    }
 
     return errors;
   }
