@@ -7,16 +7,26 @@
 
   float: left;
   margin-left: 5%;
-  height: 70%;
-  width: 45%;
+  height: 80%;
+  width: 55%;
 
   padding: 16px;
+}
+#but {
+  height: 30px;
+  margin-right: 3%;
+  background-color: rgb(54, 54, 54);
+  color: white;
+  transition: all 0.3;
+}
+#but:hover {
+  background-color: rgb(99, 99, 99);
 }
 .child2 {
   float: left;
 
   height: 70%;
-  width: 45%;
+  width: 35%;
 
   padding: 16px;
 }

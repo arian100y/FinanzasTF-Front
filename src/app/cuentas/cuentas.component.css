@@ -116,7 +116,34 @@ table {
   text-decoration: none;
   cursor: pointer;
 }
+input[type="text"],
+input[type="password"],
+input[type="checkbox"],
+input[type="number"] {
+  width: 50%;
+  padding: 12px 20px;
 
+  display: inline-block;
+  border: 2px solid rgb(158, 158, 158);
+  box-sizing: border-box;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.4s;
+}
+input:focus {
+  border: 2px solid black;
+}
+input::placeholder {
+  transition: all 0.3s;
+}
+input:hover::placeholder {
+  font-size: 17px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .register {
   background-color: rgb(50, 50, 50);
   color: white;

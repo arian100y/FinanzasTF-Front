@@ -84,16 +84,26 @@
     </h1>
     <label style="font-size: 20px" class="input">Nuevo Credito:</label>
     <input
+      (keypress)="isNumberKey($event)"
+      type="number"
       placeholder="{{ selectedCliente.credito }}"
       class="input"
-      [(ngModel)]="selectedCliente.credito"
+      [(ngModel)]="credito"
     />
+    <p [hidden]="!errores.credito[1]" style="color: red">
+      {{ errores.credito[0] }}
+    </p>
     <label style="font-size: 20px" class="input">Nueva Tasa:</label>
     <input
+      (keypress)="isNumberKey($event)"
+      type="number"
       placeholder="{{ selectedCliente.tasa.monto }} %"
       class="input"
-      [(ngModel)]="selectedCliente.tasa.monto"
+      [(ngModel)]="tasaMonto"
     />
+    <p [hidden]="!errores.montoTasa[1]" style="color: red">
+      {{ errores.montoTasa[0] }}
+    </p>
     <button class="register" (click)="guardarCambios()">
       Guardar cambios!
     </button>
