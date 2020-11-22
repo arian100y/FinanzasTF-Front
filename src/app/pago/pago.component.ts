@@ -55,19 +55,41 @@ export class PagoComponent implements OnInit {
         this.deudas.sort((b, a) => a.id - b.id);
         this.deuda = this.deudas[0];
         this.dataSource = new MatTableDataSource<Deuda>(this.cliente.deudas);
-        this.displayedColumns = ['id', 'fecha', 'valor'];
+        this.displayedColumns = [
+          'fecha',
+          'valor',
+          'interes',
+          'pagado',
+          'actions',
+        ];
         this.tipo = this.tipoTasa[this.cliente.tasa.tipo];
         this.dataSource.paginator = this.paginator;
       });
   }
-
+  getFecha2(row) {
+    return row.split('T')[0];
+  }
+  soles(row) {
+    if (this.appComponent.info.tasa.moneda == 1) {
+      return '$ ' + row.monto;
+    } else {
+      return 'S/' + row.monto;
+    }
+  }
   goToGastos(element) {
     console.log('el', element);
     this.deudaService.saveDeuda(element);
     this.cookies.set('lastGastos', JSON.stringify(element));
     this.router.navigate(['gastos-actuales']);
   }
-  
+
+  getEstado(estado) {
+    if (estado === false) {
+      return 'No pagado.';
+    } else {
+      return 'Pagado.';
+    }
+  }
   estado() {
     if (parseFloat(this.cliente.credito) < 0) {
       if (

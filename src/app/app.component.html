@@ -20,11 +20,15 @@
     </li>
 
     <li [hidden]="!loggedInCliente">
-      <a routerLink="/pagos-cliente">Pagos</a>
+      <a id="5" (click)="toggle($event)" routerLink="/pagos-cliente">Pagos</a>
     </li>
-    <li [hidden]="!loggedInCliente"><a routerLink="/perfil">Perfil</a></li>
     <li [hidden]="!loggedInCliente">
-      <a routerLink="/notificaciones">Notificaciones</a>
+      <a id="6" (click)="toggle($event)" routerLink="/perfil">Perfil</a>
+    </li>
+    <li [hidden]="!loggedInCliente">
+      <a id="7" (click)="toggle($event)" routerLink="/notificaciones"
+        >Notificaciones</a
+      >
     </li>
 
     <li [hidden]="!loggedInCliente && !loggedInNegocio" class="test">
