@@ -16,6 +16,9 @@ export class DeudaService {
     this.deuda = ded;
   }
 
+  simulate(): Observable<Deuda> {
+    return this.http.get<Deuda>(`${this.url}/generate`);
+  }
   getDeuda() {
     return this.deuda;
   }

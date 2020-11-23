@@ -8,7 +8,11 @@ import { AppComponent } from '../app.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { Cliente } from '../models/Cliente';
 import { MatPaginator } from '@angular/material/paginator';
-
+import { DeudaService } from '../services/deuda.service';
+interface Tiempos {
+  value: number;
+  viewValue: string;
+}
 @Component({
   selector: 'app-cuentas',
   templateUrl: './cuentas.component.html',
@@ -24,11 +28,23 @@ export class CuentasComponent implements OnInit {
     private negocioService: NegocioService,
     private clienteService: ClienteService,
     private router: Router,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private deudaService: DeudaService
   ) {
     this.resetErrors();
   }
 
+  foods2 = [
+    'Diaria',
+    'Semanal',
+    'Quincenal',
+    'Mensual',
+    'Bimestral',
+    'Trimestral',
+    'Cuatrimestral',
+    'Semestral',
+    'Anual',
+  ];
   ngOnInit(): void {
     this.negocioService
       .getNegociobyPerfil_id(this.appComponent.id)
@@ -37,11 +53,12 @@ export class CuentasComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Cliente>(data.clientes);
         this.loading = true;
         this.displayedColumns = [
-          'id',
           'perfil.nombre',
+          'tipoTasa',
+          'capita',
           'tasa',
           'credito',
-          'deudaMonto',
+          // 'deudaMonto',
           'moneda',
           'actions',
           'cuentas',
@@ -50,6 +67,23 @@ export class CuentasComponent implements OnInit {
       });
   }
 
+  getTipoTasa(tasa) {
+    if (tasa.tipo === 0) {
+      return `Tasa Simple ${this.foods2[tasa.periodo]}`;
+    } else if (tasa.tipo === 1) {
+      return `Tasa Nominal ${this.foods2[tasa.periodo]}`;
+    } else {
+      return `Tasa Efectiva ${this.foods2[tasa.periodo]}`;
+    }
+  }
+
+  getCapitalizacion(tasa) {
+    if (tasa.tipo == 1) {
+      return this.foods2[tasa.periodoCapitalizacion];
+    } else {
+      return 'Nulo';
+    }
+  }
   openModal(row) {
     this.selectedCliente = row;
 
@@ -125,6 +159,9 @@ export class CuentasComponent implements OnInit {
 
     return errors;
   }
+  getTasa(tasa) {
+    return tasa * 100;
+  }
   isNumberKey(evt) {
     console.log(evt.keyCode);
     let charCode = evt.which ? evt.which : evt.keyCode;
@@ -150,5 +187,11 @@ export class CuentasComponent implements OnInit {
         this.errores[key] = errs[key];
       });
     }
+  }
+
+  generate() {
+    this.deudaService.simulate().subscribe((data) => {
+      console.log(data);
+    });
   }
 }

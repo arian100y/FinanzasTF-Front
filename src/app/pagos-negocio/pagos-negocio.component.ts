@@ -28,7 +28,7 @@ export class PagosNegocioComponent implements OnInit {
         this.clientes = data.clientes;
         this.dataSource = new MatTableDataSource<Cliente>(data.clientes);
         this.loading = true;
-        this.displayedColumns = ['id', 'nombre', 'dni', 'monto', 'estado'];
+        this.displayedColumns = ['nombre', 'dni', 'monto', 'estado'];
         this.dataSource.paginator = this.paginator;
       });
   }

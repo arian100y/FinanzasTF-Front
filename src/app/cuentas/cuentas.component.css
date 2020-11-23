@@ -41,8 +41,6 @@ table {
   background-color: rgb(47, 139, 214);
 }
 .title {
-  margin-left: 5%;
-  margin-top: 2vh;
   color: rgb(50, 50, 50);
   font-size: 30px;
 }
@@ -109,7 +107,13 @@ table {
   font-size: 28px;
   font-weight: bold;
 }
-
+.register2 {
+  margin-left: 80%;
+  height: 30px;
+  background-color: rgb(59, 59, 59);
+  color: white;
+  max-width: fit-content;
+}
 .close:hover,
 .close:focus {
   color: black;
@@ -158,7 +162,7 @@ input::-webkit-inner-spin-button {
   transition: all 0.2s;
   margin-top: 2%;
   outline: none;
-
+  margin-left: 50%;
   margin-top: 2%;
   margin-bottom: 2%;
   width: 50%;

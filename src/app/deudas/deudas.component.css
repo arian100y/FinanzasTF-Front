@@ -30,6 +30,13 @@ table {
   padding: 10px 10px;
   border-radius: 25px;
 }
+.register {
+  margin-left: 10%;
+
+  height: 30px;
+  background-color: rgb(59, 59, 59);
+  color: white;
+}
 #but {
   height: 30px;
   margin-right: 3%;
@@ -47,10 +54,9 @@ table {
   color: green;
 }
 .title {
-  margin-left: 5%;
-  margin-top: 2vh;
   color: rgb(50, 50, 50);
   font-size: 30px;
+  min-width: fit-content;
 }
 .redBar {
   border-bottom: 2px solid rgb(40, 108, 139);
