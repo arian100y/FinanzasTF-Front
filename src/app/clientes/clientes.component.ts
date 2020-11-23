@@ -52,7 +52,6 @@ export class ClientesComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Cliente>(data.clientes);
         this.loading = true;
         this.displayedColumns = [
-          'id',
           'perfil.nombre',
           'perfil.dni',
           'perfil.direccion',
@@ -64,8 +63,9 @@ export class ClientesComponent implements OnInit {
       });
   }
   errores = {
-    credito: null,
-    montoTasa: null,
+    nombre: null,
+    correo: null,
+    direccion: null,
   };
   resetErrors() {
     Object.keys(this.errores).forEach((key) => {
@@ -75,12 +75,9 @@ export class ClientesComponent implements OnInit {
   openModal(row) {
     this.selectedCliente = row;
 
-    this.credito = this.selectedCliente.credito;
-
-    this.tasaMonto = Object.assign(
-      this.selectedCliente.tasa.monto,
-      this.selectedCliente.tasa.monto
-    );
+    this.nombre = this.selectedCliente.perfil.nombre;
+    this.correo = this.selectedCliente.perfil.correo;
+    this.direccion = this.selectedCliente.perfil.direccion;
 
     this.resetErrors();
     document.getElementById('myModal').style.display = 'block';
@@ -88,32 +85,27 @@ export class ClientesComponent implements OnInit {
   closeModal() {
     document.getElementById('myModal').style.display = 'none';
   }
-  credito = '';
-  tasaMonto = 0;
+  nombre = null;
+  direccion = null;
+  correo = null;
   checkForm(): {} {
     let errors = {};
 
-    if (this.credito === null) {
-      this.credito = this.selectedCliente.credito;
-    } else if (
-      parseFloat(this.credito) < parseFloat(this.selectedCliente.credito)
-    ) {
-      errors['credito'] = [
-        'Credito no puede ser menor al credito actual.',
-        true,
-      ];
-    } else if (
-      this.credito == '0' ||
-      this.credito == '0.0' ||
-      this.credito == '0.00'
-    ) {
-      errors['credito'] = ['Credito no puede ser 0.', true];
+    if (this.nombre === null) {
+      this.nombre = this.selectedCliente.perfil.nombre;
+    } else if (this.nombre == '') {
+      errors['nombre'] = ['Nombre no puede estar vacio.', true];
     }
 
-    if (this.tasaMonto === null) {
-      this.tasaMonto = this.selectedCliente.tasa.monto;
-    } else if (this.tasaMonto == 0) {
-      errors['montoTasa'] = ['Monto de tasa no puede ser 0.', true];
+    if (this.correo === null) {
+      this.correo = this.selectedCliente.perfil.correo;
+    } else if (this.correo == '') {
+      errors['correo'] = ['Correo no puede estar vacio.', true];
+    }
+    if (this.direccion === null) {
+      this.direccion = this.selectedCliente.perfil.direccion;
+    } else if (this.direccion == '') {
+      errors['direccion'] = ['Direccion no puede estar vacio.', true];
     }
 
     return errors;
@@ -122,8 +114,10 @@ export class ClientesComponent implements OnInit {
     this.resetErrors();
     let errs = this.checkForm();
     if (Object.keys(errs).length === 0) {
-      this.selectedCliente.credito = this.credito;
-      this.selectedCliente.tasa.monto = this.tasaMonto;
+      this.selectedCliente.perfil.nombre = this.nombre;
+      this.selectedCliente.perfil.correo = this.correo;
+      this.selectedCliente.perfil.direccion = this.direccion;
+
       this.clienteService
         .editCliente(this.selectedCliente)
         .subscribe((data) => {

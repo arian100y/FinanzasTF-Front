@@ -9,14 +9,7 @@
 
 <div class="mat-elevation-z8" [hidden]="!loading">
   <table mat-table [dataSource]="dataSource">
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
     <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.id }}</td>
-    </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="perfil.nombre">
@@ -88,30 +81,30 @@
       type="text"
       placeholder="{{ selectedCliente.perfil.nombre }}"
       class="input"
-      [(ngModel)]="credito"
+      [(ngModel)]="nombre"
     />
-    <p [hidden]="!errores.credito[1]" style="color: red">
-      {{ errores.credito[0] }}
+    <p [hidden]="!errores.nombre[1]" style="color: red">
+      {{ errores.nombre[0] }}
     </p>
     <label style="font-size: 20px" class="input">Nueva Direccion:</label>
     <input
       type="text"
       placeholder="{{ selectedCliente.perfil.direccion }} %"
       class="input"
-      [(ngModel)]="tasaMonto"
+      [(ngModel)]="direccion"
     />
-    <p [hidden]="!errores.montoTasa[1]" style="color: red">
-      {{ errores.montoTasa[0] }}
+    <p [hidden]="!errores.direccion[1]" style="color: red">
+      {{ errores.direccion[0] }}
     </p>
     <label style="font-size: 20px" class="input">Nuevo Correo:</label>
     <input
       type="text"
       placeholder="{{ selectedCliente.perfil.correo }} %"
       class="input"
-      [(ngModel)]="tasaMonto"
+      [(ngModel)]="correo"
     />
-    <p [hidden]="!errores.montoTasa[1]" style="color: red">
-      {{ errores.montoTasa[0] }}
+    <p [hidden]="!errores.correo[1]" style="color: red">
+      {{ errores.correo[0] }}
     </p>
 
     <button class="registerNew" (click)="guardarCambios()">
