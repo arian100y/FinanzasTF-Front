@@ -100,4 +100,12 @@ export class GastosCobrosNegocioComponent implements OnInit {
   goToRegistrarGasto() {
     this.router.navigate(['registrar-gasto-negocio']);
   }
+
+  soles(row) {
+    if (row.tasa.moneda == 1) {
+      return '$'
+    } else {
+      return 'S/'
+    }
+  }
 }

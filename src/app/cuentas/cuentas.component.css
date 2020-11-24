@@ -108,12 +108,12 @@ table {
   font-weight: bold;
 }
 .register2 {
-  margin-left: 80%;
   height: 30px;
   background-color: rgb(59, 59, 59);
   color: white;
   max-width: fit-content;
 }
+
 .close:hover,
 .close:focus {
   color: black;

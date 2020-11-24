@@ -23,7 +23,7 @@ export class DeudasComponent implements OnInit {
 
   tipoTasa = ['Tasa simple', 'Tasa nominal', 'Tasa efectiva'];
   tipoTasaAbreviacion = ['S', 'N', 'E'];
-  tipoPeriodo = ['D', 'S', 'M', 'B', 'T', 'C', 'S', 'A'];
+  tipoPeriodo = ['D', 'S', 'Q', 'M', 'B', 'T', 'C', 'S', 'A'];
   tipo = '';
 
   constructor(
@@ -117,11 +117,13 @@ export class DeudasComponent implements OnInit {
   }
   soles(row) {
     if (row.tasa.moneda == 1) {
-      return '$ ' + row.deudas[row.deudas.length - 1].monto;
+      return '$'
     } else {
-      return 'S/' + row.deudas[row.deudas.length - 1].monto;
+      return 'S/'
     }
   }
+
+  
   getFecha() {
     return this.deuda.fecha.split('T')[0];
   }

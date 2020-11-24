@@ -54,8 +54,8 @@ export class ClienteLoginComponent implements OnInit {
             this.appComponent.info = data;
             
             
-            this.cookie.set("cliente",JSON.stringify(data) );
             this.cookie.set("loggedInCliente","yes");
+            this.cookie.set("cliente",JSON.stringify(data) );
             
             this.router.navigate(['pagos-cliente']);
         })

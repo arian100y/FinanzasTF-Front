@@ -8,8 +8,8 @@ import { Deuda } from '../models/Deuda';
 })
 export class DeudaService {
   deuda: Deuda;
-  private url: string = 'https://finanzas-tp.herokuapp.com/deudas';
-  //private url: string = "http://localhost:8080/gastos"
+  //private url: string = 'https://finanzas-tp.herokuapp.com/deudas';
+  private url: string = "http://localhost:8080/deudas"
   constructor(private http: HttpClient) {}
 
   saveDeuda(ded: Deuda) {
@@ -18,6 +18,10 @@ export class DeudaService {
 
   simulate(): Observable<Deuda> {
     return this.http.get<Deuda>(`${this.url}/generate`);
+  }
+
+  simulateMora(): Observable<Deuda> {
+    return this.http.get<Deuda>(`${this.url}/mora`);
   }
   getDeuda() {
     return this.deuda;

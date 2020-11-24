@@ -110,9 +110,9 @@ export class CuentasComponent implements OnInit {
   }
   soles(row) {
     if (row.tasa.moneda == 1) {
-      return '$ ' + row.deudas[row.deudas.length - 1].monto;
+      return '$ '
     } else {
-      return 'S/' + row.deudas[row.deudas.length - 1].monto;
+      return 'S/'
     }
   }
   goToDeudas(row) {
@@ -191,6 +191,12 @@ export class CuentasComponent implements OnInit {
 
   generate() {
     this.deudaService.simulate().subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  simmulateMora() {
+    this.deudaService.simulateMora().subscribe((data) => {
       console.log(data);
     });
   }

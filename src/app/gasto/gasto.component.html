@@ -19,7 +19,7 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="monto">
       <th mat-header-cell *matHeaderCellDef>Monto</th>
-      <td mat-cell *matCellDef="let element">{{ element.monto }}</td>
+      <td mat-cell *matCellDef="let element">{{soles(cliente)}}{{ element.monto }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -30,7 +30,7 @@
 
     <ng-container matColumnDef="envioMonto">
       <th mat-header-cell *matHeaderCellDef>Monto de Envio</th>
-      <td mat-cell *matCellDef="let element">{{ element.envioMonto }}</td>
+      <td mat-cell *matCellDef="let element">{{soles(cliente)}}{{ element.envioMonto }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

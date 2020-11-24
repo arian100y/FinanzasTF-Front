@@ -6,6 +6,8 @@ import { AppComponent } from '../app.component';
 import { GastoService } from '../services/gasto.service';
 import { DeudaService } from '../services/deuda.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ClienteService } from '../services/cliente.service';
+import { Cliente } from '../models/Cliente';
 
 @Component({
   selector: 'app-gasto',
@@ -20,6 +22,7 @@ export class GastoComponent implements OnInit {
     'fecha',
     'envioMonto',
   ];
+  cliente: Cliente
   dataSource: MatTableDataSource<Gasto>;
   loading = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -27,23 +30,41 @@ export class GastoComponent implements OnInit {
   constructor(
     private deudaService: DeudaService,
     private appComponent: AppComponent,
+    private clienteService: ClienteService,
     private cookie: CookieService
   ) {}
 
   ngOnInit(): void {
     //this.dataSource.paginator = this.paginator;\
+
+    this.clienteService.share.subscribe((x) => {
+      this.cliente = x;
+    })
+
     let data;
     if (this.cookie.get('lastGastos')) {
       data = JSON.parse(this.cookie.get('lastGastos'));
     } else {
       data = this.deudaService.getDeuda();
     }
+    
+    
 
     console.log(data.gastos);
 
     this.dataSource = new MatTableDataSource<Gasto>(data.gastos);
     this.loading = true;
     this.dataSource.paginator = this.paginator;
+
+    
+  }
+
+  soles(row) {
+    if (row.tasa.moneda == 1) {
+      return '$'
+    } else {
+      return 'S/'
+    }
   }
 }
 

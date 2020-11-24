@@ -28,7 +28,7 @@ export class PagoComponent implements OnInit {
 
   tipoTasa = ['Tasa simple', 'Tasa nominal', 'Tasa efectiva'];
   tipoTasaAbreviacion = ['S', 'N', 'E'];
-  tipoPeriodo = ['D', 'S', 'M', 'B', 'T', 'C', 'S', 'A'];
+  tipoPeriodo = ['D', 'S', 'Q', 'M', 'B', 'T', 'C', 'S', 'A'];
   tipo = '';
   constructor(
     private router: Router,
@@ -71,9 +71,9 @@ export class PagoComponent implements OnInit {
   }
   soles(row) {
     if (this.appComponent.info.tasa.moneda == 1) {
-      return '$ ' + row.monto;
+      return '$'
     } else {
-      return 'S/' + row.monto;
+      return 'S/'
     }
   }
   goToGastos(element) {
