@@ -142,11 +142,6 @@ export class RegistrarClienteComponent implements OnInit {
         'Monto de mantenimiento no estar vacio.',
         true,
       ];
-    } else if (this.cliente.mantenimiento < 0.0) {
-      errors['mantenimiento'] = [
-        'Monto de mantenimiento no puede ser negativo.',
-        true,
-      ];
     } else if (this.cliente.mantenimiento > 1.0) {
       errors['mantenimiento'] = [
         'Monto de mantenimiento tiene que estar en decimal.',

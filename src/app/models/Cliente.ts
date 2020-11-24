@@ -15,6 +15,7 @@ export class Cliente {
   }
   mantenimiento: number;
   periodoMantenimiento: number;
+  montoMora: number;
   moneda: string;
   negocio_id: number;
   perfil: Perfil;
