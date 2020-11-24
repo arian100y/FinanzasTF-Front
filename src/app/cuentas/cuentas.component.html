@@ -1,11 +1,21 @@
 <div style="margin-left: 5%; margin-right: 5%; display: flex">
   <h4 class="title">Cuentas</h4>
-    <button style="margin-left: 70%;" class="register2" mat-raised-button (click)="generate()">
-      Simular fin de F.E
-    </button>
-    <button style="margin-left: 1%;" class="register2" mat-raised-button (click)="simmulateMora()">
-      Simular exceso de F.E
-    </button>
+  <button
+    style="margin-left: 60%"
+    class="register2"
+    mat-raised-button
+    (click)="generate()"
+  >
+    Simular fin de F.E
+  </button>
+  <button
+    style="margin-left: 1%"
+    class="register2"
+    mat-raised-button
+    (click)="simmulateMora()"
+  >
+    Simular exceso de F.E
+  </button>
 </div>
 <div class="redBar"></div>
 <h4 class="title"></h4>
@@ -49,7 +59,7 @@
     <ng-container matColumnDef="credito">
       <th mat-header-cell *matHeaderCellDef>Credito</th>
       <td mat-cell *matCellDef="let cliente">
-        {{ soles(cliente) }} {{cliente.credito}}
+        {{ soles(cliente) }} {{ cliente.credito }}
       </td>
     </ng-container>
     <!-- Symbol Column -->
@@ -64,6 +74,12 @@
       <th mat-header-cell *matHeaderCellDef>Moneda</th>
       <td mat-cell *matCellDef="let cliente">
         {{ moneda(cliente) }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="tasaMant">
+      <th mat-header-cell *matHeaderCellDef>Tasa Mantenimiento</th>
+      <td mat-cell *matCellDef="let cliente">
+        {{ getTasa(cliente.mantenimiento) }}%
       </td>
     </ng-container>
     <ng-container matColumnDef="actions">
@@ -87,7 +103,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator [hidden]="!loading" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator
+    [hidden]="!loading"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
 </div>
 <div class="loader" [hidden]="loading"></div>
 
@@ -101,14 +121,24 @@
       {{ selectedCliente.perfil.apellidoM }}
     </h1>
     <label style="font-size: 20px" class="input">Nuevo Credito:</label>
-    <input (keypress)="isNumberKey($event)" type="number" placeholder="{{ selectedCliente.credito }}" class="input"
-      [(ngModel)]="credito" />
+    <input
+      (keypress)="isNumberKey($event)"
+      type="number"
+      placeholder="{{ selectedCliente.credito }}"
+      class="input"
+      [(ngModel)]="credito"
+    />
     <p [hidden]="!errores.credito[1]" style="color: red">
       {{ errores.credito[0] }}
     </p>
     <label style="font-size: 20px" class="input">Nueva Tasa:</label>
-    <input (keypress)="isNumberKey($event)" type="number" placeholder="{{ selectedCliente.tasa.monto }} %" class="input"
-      [(ngModel)]="tasaMonto" />
+    <input
+      (keypress)="isNumberKey($event)"
+      type="number"
+      placeholder="{{ selectedCliente.tasa.monto }} %"
+      class="input"
+      [(ngModel)]="tasaMonto"
+    />
     <p [hidden]="!errores.montoTasa[1]" style="color: red">
       {{ errores.montoTasa[0] }}
     </p>

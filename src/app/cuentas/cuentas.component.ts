@@ -60,6 +60,7 @@ export class CuentasComponent implements OnInit {
           'credito',
           // 'deudaMonto',
           'moneda',
+          'tasaMant',
           'actions',
           'cuentas',
         ];
@@ -110,9 +111,9 @@ export class CuentasComponent implements OnInit {
   }
   soles(row) {
     if (row.tasa.moneda == 1) {
-      return '$ '
+      return '$ ';
     } else {
-      return 'S/'
+      return 'S/';
     }
   }
   goToDeudas(row) {

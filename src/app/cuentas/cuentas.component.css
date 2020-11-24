@@ -111,7 +111,6 @@ table {
   height: 30px;
   background-color: rgb(59, 59, 59);
   color: white;
-  max-width: fit-content;
 }
 
 .close:hover,
