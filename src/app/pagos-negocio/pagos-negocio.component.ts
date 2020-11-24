@@ -28,16 +28,38 @@ export class PagosNegocioComponent implements OnInit {
         this.clientes = data.clientes;
         this.dataSource = new MatTableDataSource<Cliente>(data.clientes);
         this.loading = true;
-        this.displayedColumns = ['nombre', 'dni', 'monto', 'estado'];
+        this.displayedColumns = [
+          'nombre',
+          'dni',
+          'monto',
+          'estado',
+          'montoMora',
+        ];
         this.dataSource.paginator = this.paginator;
       });
   }
   soles(row) {
+    let deudas = row.deudas;
+    deudas.sort((a, b) => b.id - a.id);
+    let ded = deudas[0];
     if (row.tasa.moneda == 1) {
-      return '$ ' + row.deudas[row.deudas.length - 1].monto;
+      return '$ ' + ded.monto;
     } else {
-      return 'S/' + row.deudas[row.deudas.length - 1].monto;
+      return 'S/' + ded.monto;
     }
+  }
+
+  solesMora(row) {
+    if (row.tasa.moneda == 1) {
+      return '$ ' + row.montoMora;
+    } else {
+      return 'S/' + row.montoMora;
+    }
+  }
+  getLastDeuda(cliente) {
+    let deudas = cliente.deudas;
+    deudas.sort((a, b) => b.id - a.id);
+    return deudas[0];
   }
   getEstado(estado) {
     if (estado === false) {

@@ -69,7 +69,18 @@ export class RegistrarNegocioComponent implements OnInit {
     }
     if (this.negocio.perfil.correo == '') {
       errors['correo'] = ['Correo no puede estar vacio.', true];
+    } else if (
+      !this.negocio.perfil.correo.includes('@') ||
+      !this.negocio.perfil.correo.includes('.') ||
+      this.negocio.perfil.correo.includes(' ')
+    ) {
+      errors['correo'] = ['Ingrese un correo valido.', true];
+    } else if (this.negocio.perfil.correo.split('@')[0] == '') {
+      errors['correo'] = ['Ingrese un correo valido.', true];
+    } else if (this.negocio.perfil.correo.split('.')[1] == '') {
+      errors['correo'] = ['Ingrese un correo valido.', true];
     }
+
     if (this.negocio.perfil.direccion == '') {
       errors['direccion'] = ['Direccion no puede estar vacio.', true];
     }

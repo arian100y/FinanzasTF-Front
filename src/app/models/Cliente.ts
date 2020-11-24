@@ -12,7 +12,10 @@ export class Cliente {
     this.deudas = new Array<Deuda>();
     this.moneda = this.fechaEmision = this.credito = '';
     this.periodoMantenimiento = 0;
+    this.montoMora = null;
+    this.hayMora = false;
   }
+  hayMora: boolean;
   mantenimiento: number;
   periodoMantenimiento: number;
   montoMora: number;

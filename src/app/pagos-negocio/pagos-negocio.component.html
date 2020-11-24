@@ -32,7 +32,13 @@
     <ng-container matColumnDef="estado">
       <th mat-header-cell *matHeaderCellDef>Estado Actual</th>
       <td mat-cell *matCellDef="let cliente">
-        {{ getEstado(cliente.deudas[cliente.deudas.length - 1].pagado) }}
+        {{ getEstado(getLastDeuda(cliente).pagado) }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="montoMora">
+      <th mat-header-cell *matHeaderCellDef>Monto de Mora</th>
+      <td mat-cell *matCellDef="let cliente">
+        {{ solesMora(cliente) }}
       </td>
     </ng-container>
 

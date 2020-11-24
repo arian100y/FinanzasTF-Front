@@ -186,7 +186,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    
+
     <div>
       <label for="mora" style="color: rgb(50, 50, 50)"><b>Mora</b></label>
       <input
@@ -195,7 +195,11 @@
         name="mora"
         required
         [(ngModel)]="cliente.montoMora"
+        (keypress)="isNumberKey($event)"
       />
+      <p [hidden]="!errores.mora[1]" style="color: red">
+        {{ errores.mora[0] }}
+      </p>
     </div>
 
     <div>

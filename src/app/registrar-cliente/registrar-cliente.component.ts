@@ -38,6 +38,7 @@ export class RegistrarClienteComponent implements OnInit {
     fecha: null,
     mantenimiento: null,
     periodoMantenimiento: null,
+    mora: null,
   };
 
   foods: Moneda[] = [
@@ -114,6 +115,16 @@ export class RegistrarClienteComponent implements OnInit {
     }
     if (this.cliente.perfil.correo == '') {
       errors['correo'] = ['Correo no puede estar vacio.', true];
+    } else if (
+      !this.cliente.perfil.correo.includes('@') ||
+      !this.cliente.perfil.correo.includes('.') ||
+      this.cliente.perfil.correo.includes(' ')
+    ) {
+      errors['correo'] = ['Ingrese un correo valido.', true];
+    } else if (this.cliente.perfil.correo.split('@')[0] == '') {
+      errors['correo'] = ['Ingrese un correo valido.', true];
+    } else if (this.cliente.perfil.correo.split('.')[1] == '') {
+      errors['correo'] = ['Ingrese un correo valido.', true];
     }
     if (this.cliente.perfil.direccion == '') {
       errors['direccion'] = ['Direccion no puede estar vacio.', true];
@@ -151,7 +162,9 @@ export class RegistrarClienteComponent implements OnInit {
     if (this.cliente.fechaEmision == '') {
       errors['fecha'] = ['Fecha de emision no puede estar vacio.', true];
     }
-
+    if (this.cliente.montoMora == null) {
+      errors['mora'] = ['Monto de mora no estar vacio.', true];
+    }
     return errors;
   }
   hide = true;
@@ -171,6 +184,9 @@ export class RegistrarClienteComponent implements OnInit {
     this.cliente.negocio_id = this.appComponent.info.id;
 
     if (Object.keys(errs).length === 0) {
+      if (this.cliente.montoMora > 0.0) {
+        this.cliente.hayMora = true;
+      }
       this.clienteService.verify(this.cliente).subscribe(
         (data) => {
           this.cliente.deudas.push(this.deuda);
