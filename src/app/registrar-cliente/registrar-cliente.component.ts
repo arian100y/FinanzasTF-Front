@@ -47,7 +47,7 @@ export class RegistrarClienteComponent implements OnInit {
   periodos: Tiempos[] = [
     { value: 0, viewValue: 'Semanal' },
     { value: 1, viewValue: 'Quincenal' },
-    { value: 2, viewValue: 'Mensual' }
+    { value: 2, viewValue: 'Mensual' },
   ];
 
   todayDate: Date = new Date();
@@ -79,6 +79,14 @@ export class RegistrarClienteComponent implements OnInit {
     Object.keys(this.errores).forEach((key) => {
       this.errores[key] = ['', false];
     });
+  }
+
+  somethingChanged(event) {
+    if (this.cliente.mantenimiento > 0.0) {
+      this.hide = false;
+    } else {
+      this.hide = true;
+    }
   }
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
@@ -139,6 +147,11 @@ export class RegistrarClienteComponent implements OnInit {
         'Monto de mantenimiento no puede ser negativo.',
         true,
       ];
+    } else if (this.cliente.mantenimiento > 0) {
+      errors['mantenimiento'] = [
+        'Monto de mantenimiento tiene que estar en decimal.',
+        true,
+      ];
     }
     if (this.cliente.fechaEmision == '') {
       errors['fecha'] = ['Fecha de emision no puede estar vacio.', true];
@@ -146,11 +159,13 @@ export class RegistrarClienteComponent implements OnInit {
 
     return errors;
   }
-
+  hide = true;
   isNumberKey(evt) {
     let charCode = evt.which ? evt.which : evt.keyCode;
-    if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+    if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
+    }
+    console.log(this.cliente.mantenimiento);
 
     return true;
   }

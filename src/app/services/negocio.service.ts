@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class NegocioService {
   private url: string = 'https://finanzas-tp.herokuapp.com/negocios';
-  //private url: string = "http://localhost:8080/negocios"
+  //private url: string = 'http://localhost:8080/negocios';
   constructor(private http: HttpClient) {}
 
   getNegocios(): Observable<Negocio[]> {

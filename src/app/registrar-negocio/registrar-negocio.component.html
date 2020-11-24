@@ -80,6 +80,9 @@
         type="number"
         placeholder="Enter RUC"
         name="ruc"
+        maxlength="11"
+        oninput="javascript: if (this.value.length > this.maxLength) 
+   this.value = this.value.slice(0, this.maxLength)"
         required
         [(ngModel)]="negocio.ruc"
       />

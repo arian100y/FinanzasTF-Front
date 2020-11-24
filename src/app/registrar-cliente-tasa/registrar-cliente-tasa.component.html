@@ -25,7 +25,11 @@
       >
       <mat-form-field appearance="fill">
         <mat-label>Tipo</mat-label>
-        <mat-select name="food" [(ngModel)]="tasa.tipo">
+        <mat-select
+          name="food"
+          [(ngModel)]="tasa.tipo"
+          (ngModelChange)="somethingChanged($event)"
+        >
           <mat-option *ngFor="let food of foods" [value]="food.value">
             {{ food.viewValue }}
           </mat-option>
@@ -36,7 +40,7 @@
       </p>
     </div>
 
-    <div>
+    <div [hidden]="hide1">
       <label for="food2" style="padding-top: 60px; color: rgb(50, 50, 50)"
         ><b>Ingrese Periodo de la Tasa</b></label
       >
@@ -54,7 +58,7 @@
       </p>
     </div>
 
-    <div>
+    <div [hidden]="hide2">
       <label
         for="periodoCapitalizacion"
         style="padding-top: 60px; color: rgb(50, 50, 50)"

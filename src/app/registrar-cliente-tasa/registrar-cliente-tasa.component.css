@@ -60,7 +60,7 @@ mat-form-field {
   float: left;
   margin-left: 5%;
   height: 100%;
-  width: 45%;
+  width: 60%;
 
   padding: 16px;
 }
@@ -68,7 +68,7 @@ mat-form-field {
   float: left;
 
   height: 100%;
-  width: 45%;
+  width: 30%;
 
   padding: 16px;
 }
