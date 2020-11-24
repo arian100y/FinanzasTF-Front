@@ -186,6 +186,17 @@
         </mat-select>
       </mat-form-field>
     </div>
+    
+    <div>
+      <label for="mora" style="color: rgb(50, 50, 50)"><b>Mora</b></label>
+      <input
+        type="number"
+        placeholder="Enter Mora"
+        name="mora"
+        required
+        [(ngModel)]="cliente.montoMora"
+      />
+    </div>
 
     <div>
       <label for="fecha" style="color: rgb(50, 50, 50)"><b>Fecha</b></label>

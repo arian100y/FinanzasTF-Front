@@ -9,7 +9,6 @@ export class Deuda{
     gastos:Gasto[];
     cliente_id: number;
     fecha: string;
-    montoMora: number;
     hayMora: boolean;
     interes: number;
     metodoPago: boolean;
