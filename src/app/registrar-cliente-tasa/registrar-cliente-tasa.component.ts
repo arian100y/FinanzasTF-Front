@@ -49,7 +49,7 @@ export class RegistrarClienteTasaComponent implements OnInit {
     { value: 5, viewValue: 'Trimestral' },
     { value: 6, viewValue: 'Cuatrimestral' },
     { value: 7, viewValue: 'Semestral' },
-    { value: 8, viewValue: 'Anual' }
+    { value: 8, viewValue: 'Anual' },
   ];
   foods3: Tiempos2[] = [
     { value: 0, viewValue: 'Diaria' },
@@ -60,7 +60,7 @@ export class RegistrarClienteTasaComponent implements OnInit {
     { value: 5, viewValue: 'Trimestral' },
     { value: 6, viewValue: 'Cuatrimestral' },
     { value: 7, viewValue: 'Semestral' },
-    { value: 8, viewValue: 'Anual' }
+    { value: 8, viewValue: 'Anual' },
   ];
   ngOnInit(): void {
     this.tasa = new Tasa();
@@ -83,6 +83,8 @@ export class RegistrarClienteTasaComponent implements OnInit {
       errors['monto'] = ['Monto de tasa no puede estar vacio.', true];
     } else if (this.tasa.monto === 0) {
       errors['monto'] = ['Monto de tasa no puede ser 0.', true];
+    } else if (this.tasa.monto > 1) {
+      errors['monto'] = ['Monto de tasa tiene que ser en decimal.', true];
     }
 
     if (this.tasa.periodo === null) {
@@ -100,6 +102,21 @@ export class RegistrarClienteTasaComponent implements OnInit {
     return errors;
   }
 
+  somethingChanged(event) {
+    console.log('fadsf');
+    if (this.tasa.tipo == 1) {
+      this.hide1 = false;
+      this.hide2 = false;
+    } else if (this.tasa.tipo == 2) {
+      this.hide1 = false;
+      this.hide2 = true;
+    } else {
+      this.hide1 = true;
+      this.hide2 = true;
+    }
+  }
+  hide1 = true;
+  hide2 = true;
   isNumberKey(evt) {
     console.log(evt.keyCode);
     let charCode = evt.which ? evt.which : evt.keyCode;
