@@ -30,7 +30,7 @@ export class DeudasComponent implements OnInit {
     private deudaService: DeudaService,
     private clienteService: ClienteService,
     private router: Router
-  ) {}
+  ) { }
   loading = false;
   deudasReales = [];
 
@@ -52,9 +52,8 @@ export class DeudasComponent implements OnInit {
 
         let fech = new Date(date);
 
-        this.dataSource[i].fecha = `${fech.getDay()}/${
-          fech.getMonth() + 1
-        }/${fech.getFullYear()}`;
+        this.dataSource[i].fecha = `${fech.getDay()}/${fech.getMonth() + 1
+          }/${fech.getFullYear()}`;
       }
       this.dataSource = this.deudas;
       this.displayedColumns = [
@@ -123,7 +122,7 @@ export class DeudasComponent implements OnInit {
     }
   }
 
-  
+
   getFecha() {
     return this.deuda.fecha.split('T')[0];
   }
@@ -158,5 +157,13 @@ export class DeudasComponent implements OnInit {
   goToGastos(row) {
     this.clienteService.saveDeuda(row);
     this.router.navigate(['gastos-cobros-negocio']);
+  }
+  getMora(cliente, deuda) {
+    if (deuda.hayMora == true) {
+      return cliente.montoMora
+    }
+    else {
+      return 0
+    }
   }
 }

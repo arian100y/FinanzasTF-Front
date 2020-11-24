@@ -17,7 +17,7 @@
       tipoTasaAbreviacion[cliente.tasa.tipo]
     }}{{ tipoPeriodo[cliente.tasa.periodo] }} {{ cliente.tasa.monto * 100 }}%
   </h4>
-  <h4 class="text">Linea de credito: {{ cliente.credito }}</h4>
+  <h4 class="text">Linea de credito: {{soles(cliente)}}{{ cliente.credito }}</h4>
   <h4 class="text">
     {{ cliente.mantenimiento * 100 }}% por gasto de mantenimiento
     {{ periodosMantenimiento[cliente.periodoMantenimiento] }}

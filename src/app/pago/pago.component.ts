@@ -70,7 +70,7 @@ export class PagoComponent implements OnInit {
     return row.split('T')[0];
   }
   soles(row) {
-    if (this.appComponent.info.tasa.moneda == 1) {
+    if (row.tasa.moneda == 0) {
       return '$'
     } else {
       return 'S/'
@@ -106,6 +106,14 @@ export class PagoComponent implements OnInit {
         document.getElementById('state').classList.toggle('green');
       }
       return 'El cliente no sobrepasa el limite de credito.';
+    }
+  }
+  getMora(cliente, deuda) {
+    if (deuda.hayMora == true) {
+      return cliente.montoMora
+    }
+    else {
+      return 0
     }
   }
 }

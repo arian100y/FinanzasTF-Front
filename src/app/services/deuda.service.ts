@@ -8,8 +8,8 @@ import { Deuda } from '../models/Deuda';
 })
 export class DeudaService {
   deuda: Deuda;
-  private url: string = 'https://finanzas-tp.herokuapp.com/deudas';
-  //private url: string = "http://localhost:8080/deudas"
+  //private url: string = 'https://finanzas-tp.herokuapp.com/deudas';
+  private url: string = "http://localhost:8080/deudas"
   constructor(private http: HttpClient) {}
 
   saveDeuda(ded: Deuda) {

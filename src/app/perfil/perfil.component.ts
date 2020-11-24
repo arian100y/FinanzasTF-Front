@@ -23,4 +23,11 @@ export class PerfilComponent implements OnInit {
       console.log(this.cliente)
     })
   }
+  soles(row) {
+    if (row.tasa.moneda == 1) {
+      return '$'
+    } else {
+      return 'S/'
+    }
+  }
 }

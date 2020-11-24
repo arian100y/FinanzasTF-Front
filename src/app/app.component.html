@@ -25,11 +25,6 @@
     <li [hidden]="!loggedInCliente">
       <a id="6" (click)="toggle($event)" routerLink="/perfil">Perfil</a>
     </li>
-    <li [hidden]="!loggedInCliente">
-      <a id="7" (click)="toggle($event)" routerLink="/notificaciones"
-        >Notificaciones</a
-      >
-    </li>
 
     <li [hidden]="!loggedInCliente && !loggedInNegocio" class="test">
       <a (click)="signOut()">Salir</a>
